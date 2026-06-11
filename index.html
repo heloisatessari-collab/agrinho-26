@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agrinho 2026 | Agro Forte, Futuro Sustentável</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        body { font-family: 'Segoe UI', system-ui, sans-serif; }
+        .hero-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1625246333195-78d9c38ad2d6?w=2000');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .card-hover:hover { transform: translateY(-15px); box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25); }
+        section { scroll-margin-top: 100px; }
+        .stat-number { font-size: 3.5rem; font-weight: 800; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 overflow-x-hidden">
+
+    <!-- Navbar -->
+    <nav class="bg-emerald-800 text-white fixed w-full z-50 shadow-xl">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-seedling text-4xl"></i>
+                <h1 class="text-3xl font-bold tracking-tight">AGRINHO 2026</h1>
+            </div>
+            <div class="hidden md:flex gap-10 text-lg font-medium">
+                <a href="#inicio" class="hover:text-emerald-300 transition">Início</a>
+                <a href="#producao" class="hover:text-emerald-300 transition">Produção</a>
+                <a href="#sustentabilidade" class="hover:text-emerald-300 transition">Sustentabilidade</a>
+                <a href="#desafios" class="hover:text-emerald-300 transition">Desafios</a>
+                <a href="#solucoes" class="hover:text-emerald-300 transition">Soluções</a>
+                <a href="#galeria" class="hover:text-emerald-300 transition">Galeria</a>
+                <a href="#acao" class="hover:text-emerald-300 transition">Participe</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Impactante -->
+    <section id="inicio" class="hero-bg h-screen flex items-center text-white relative">
+        <div class="max-w-7xl mx-auto px-6 text-center z-10">
+            <h1 class="text-6xl md:text-7xl font-black mb-6 leading-tight">
+                AGRO FORTE,<br>
+                <span class="text-emerald-300">FUTURO SUSTENTÁVEL</span>
+            </h1>
+            <p class="text-2xl md:text-3xl max-w-3xl mx-auto mb-10">
+                Como conciliar alta produtividade com a preservação do planeta
+            </p>
+            <a href="#acao" class="inline-block bg-white text-emerald-800 px-12 py-5 rounded-full text-xl font-bold hover:bg-emerald-100 transition text-center">
+                Quero fazer a diferença →
+            </a>
+        </div>
+        <div class="absolute bottom-10 left-1/2 animate-bounce">
+            <i class="fa-solid fa-chevron-down text-4xl"></i>
+        </div>
+    </section>
+
+    <!-- Produção -->
+    <section id="producao" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-5xl font-bold text-center mb-16 text-emerald-800">O Poder do Agronegócio Brasileiro</h2>
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="text-center">
+                    <div class="stat-number text-emerald-600" data-target="24.5">0</div>
+                    <p class="text-2xl font-semibold">do PIB Nacional</p>
+                </div>
+                <div class="text-center">
+                    <div class="stat-number text-emerald-600" data-target="20">0</div>
+                    <p class="text-2xl font-semibold">Milhões de Empregos</p>
+                </div>
+                <div class="text-center">
+                    <div class="stat-number text-emerald-600" data-target="1">0</div>
+                    <p class="text-2xl font-semibold">Maior Exportador Mundial</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sustentabilidade -->
+    <section id="sustentabilidade" class="py-24 bg-emerald-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-5xl font-bold text-center mb-16 text-emerald-800">Tecnologias Sustentáveis</h2>
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="space-y-10">
+                    <div class="flex gap-6 card-hover bg-white p-8 rounded-3xl transition">
+                        <span class="text-5xl">📡</span>
+                        <div>
+                            <h3 class="text-2xl font-bold">Agricultura de Precisão</h3>
+                            <p class="text-gray-600 mt-3">Sensores, GPS e IA reduzem o uso de fertilizantes e defensivos em até 30%.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 card-hover bg-white p-8 rounded-3xl transition">
+                        <span class="text-5xl">🚁</span>
+                        <div>
+                            <h3 class="text-2xl font-bold">Drones e Satélites</h3>
+                            <p class="text-gray-600 mt-3">Monitoramento em tempo real da saúde das plantas.</p>
+                        </div>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad2d6?w=900" alt="Tecnologia no agro" class="rounded-3xl shadow-2xl">
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria Antes e Depois -->
+    <section id="galeria" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-5xl font-bold text-center mb-16">Antes e Depois da Recuperação</h2>
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="text-center">
+                    <img src="https://images.unsplash.com/photo-1500595046743-9d8c8e8f8b8b?w=800" class="rounded-3xl mb-4" alt="Antes">
+                    <p class="font-bold text-red-600">Área Degradada</p>
+                </div>
+                <div class="text-center">
+                    <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800" class="rounded-3xl mb-4" alt="Depois">
+                    <p class="font-bold text-emerald-600">Área Recuperada com ILPF</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ação -->
+    <section id="acao" class="py-24 bg-emerald-800 text-white">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-5xl font-bold mb-10">Faça sua parte!</h2>
+            
+            <div class="bg-white/10 backdrop-blur-xl p-12 rounded-3xl mb-12">
+                <h3 class="text-3xl font-bold mb-8">Calculadora de Impacto</h3>
+                <input type="number" id="hectares" value="100" class="w-full p-6 text-3xl rounded-2xl text-center mb-8">
+                <button onclick="calcularImpacto()" class="w-full py-6 bg-white text-emerald-800 text-2xl font-bold rounded-2xl hover:bg-emerald-100">
+                    Calcular Meu Impacto
+                </button>
+                <div id="resultado" class="mt-10 text-3xl font-bold min-h-[120px]"></div>
+            </div>
+
+            <div class="mt-16">
+                <h3 class="text-3xl font-bold mb-8">Teste seu Conhecimento</h3>
+                <div id="quiz" class="bg-white/10 backdrop-blur-xl p-10 rounded-3xl"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-emerald-950 text-white py-16 text-center">
+        <p class="text-3xl font-bold mb-4">🌱 AGRINHO 2026</p>
+        <p class="text-xl">Feito com dedicação e amor pelo futuro do nosso planeta</p>
+    </footer>
+
+    <script>
+        // Animação dos números
+        function animateValue(id, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                if (id) document.getElementById(id).textContent = value;
+                if (progress < 1) window.requestAnimationFrame(step);
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Contadores
+        function startCounters() {
+            document.querySelectorAll('.stat-number').forEach(el => {
+                const target = parseFloat(el.getAttribute('data-target'));
+                animateValue(null, 0, target, 2000);
+                el.textContent = target;
+            });
+        }
+
+        // Calculadora
+        function calcularImpacto() {
+            const ha = parseFloat(document.getElementById('hectares').value) || 0;
+            const emissao = (ha * 2.8).toFixed(1);
+            document.getElementById('resultado').innerHTML = `
+                <p class="text-emerald-200">Em <span class="text-4xl">${ha}</span> hectares você emite aproximadamente:</p>
+                <p class="text-6xl font-black text-white mt-4">${emissao} ton CO₂/ano</p>
+                <p class="mt-6 text-emerald-100">Com práticas sustentáveis podemos reduzir até 40%!</p>
+            `;
+        }
+
+        // Quiz aprimorado
+        const questions = [
+            { q: "Qual gás é mais emitido pela pecuária?", options: ["Metano", "CO₂", "Óxido Nitroso"], a: "Metano" },
+            { q: "O que significa ILPF?", options: ["Integração Lavoura-Pecuária-Floresta", "Irrigação Local", "Inteligência Artificial"], a: "Integração Lavoura-Pecuária-Floresta" },
+            { q: "Qual tecnologia ajuda a economizar até 50% de água?", options: ["Drones", "Irrigação Inteligente", "Tratores"], a: "Irrigação Inteligente" }
+        ];
+
+        let current = 0;
+        function loadQuiz() {
+            let html = `<p class="text-2xl mb-8">${questions[current].q}</p>`;
+            questions[current].options.forEach(opt => {
+                html += `<button onclick="answerQuiz('${opt}')" class="block w-full p-5 mb-4 text-left border border-white/30 hover:border-white rounded-2xl transition">${opt}</button>`;
+            });
+            document.getElementById('quiz').innerHTML = html;
+        }
+
+        function answerQuiz(selected) {
+            const correct = questions[current].a;
+            if (selected === correct) {
+                document.getElementById('quiz').innerHTML = `<p class="text-4xl font-bold text-emerald-300">✅ Excelente! Você acertou!</p>`;
+            } else {
+                document.getElementById('quiz').innerHTML = `<p class="text-4xl font-bold text-red-300">A resposta certa era: <strong>${correct}</strong></p>`;
+            }
+            setTimeout(() => { current = (current + 1) % questions.length; loadQuiz(); }, 2800);
+        }
+
+        // Inicialização
+        window.onload = () => {
+            startCounters();
+            loadQuiz();
+            calcularImpacto();
+        };
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener("click", function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute("href")).scrollIntoView({ behavior: "smooth" });
+            });
+        });
+    </script>
+</body>
+</html>
