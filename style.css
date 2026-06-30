@@ -5,6 +5,7 @@
 :root {
     --primaria: #065F46;
     --secundaria: #10B981;
+    --destaque: #34D399;
 }
 
 * {
@@ -15,7 +16,6 @@
 
 body {
     font-family: 'Segoe UI', system-ui, sans-serif;
-    line-height: 1.6;
 }
 
 /* Navbar */
@@ -30,20 +30,15 @@ nav {
 
 /* Hero */
 .hero-bg {
-    background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)),
-                url('https://images.unsplash.com/photo-1625246333195-78d9c38ad2d6?w=2000') center/cover no-repeat;
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), 
+                      url('https://images.unsplash.com/photo-1625246333195-78d9c38ad2d6?w=2000');
+    background-size: cover;
+    background-position: center;
     background-attachment: fixed;
     height: 100vh;
     display: flex;
     align-items: center;
     color: white;
-}
-
-/* Imagens */
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
 }
 
 /* Seções */
@@ -56,18 +51,34 @@ h2 {
     font-size: 3rem;
     font-weight: 700;
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 3.5rem;
     color: var(--primaria);
 }
 
-/* Cards e estilos gerais */
-.bg-white {
-    background-color: white;
+/* Cards */
+.card-hover:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
 }
 
-.shadow {
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+/* Imagens */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 1.5rem;
 }
 
-.rounded-3xl {
-    border-radius: 1.5
+/* Calculadora e Quiz */
+input[type="number"] {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+    border: 2px solid rgba(255,255,255,0.3);
+}
+
+button {
+    transition: all 0.3s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+}
