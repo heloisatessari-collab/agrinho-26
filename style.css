@@ -1,0 +1,191 @@
+/* =============================================
+   STYLE.CSS - AGRINHO 2026
+   Tema: Agro Forte, Futuro Sustentável
+   ============================================= */
+
+:root {
+    --primaria: #065F46;
+    --secundaria: #10B981;
+    --destaque: #34D399;
+    --escuro: #022C22;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background-color: #F8FAFC;
+    color: #1F2937;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Navbar */
+nav {
+    background-color: #065F46;
+    color: white;
+    position: fixed;
+    width: 100%;
+    z-index: 50;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.85rem;
+    font-weight: 700;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.25rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #34D399;
+}
+
+/* Hero */
+.hero-bg {
+    background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)), 
+                url('https://images.unsplash.com/photo-1625246333195-78d9c38ad2d6?w=2000') center/cover no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    color: white;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 4.2rem;
+    line-height: 1.1;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+}
+
+.hero h1 span {
+    color: #34D399;
+}
+
+.hero p {
+    font-size: 1.75rem;
+    max-width: 800px;
+    margin: 0 auto 2.5rem;
+    font-weight: 400;
+}
+
+.btn-hero {
+    background-color: white;
+    color: #065F46;
+    padding: 1.25rem 3rem;
+    font-size: 1.35rem;
+    font-weight: 700;
+    border-radius: 9999px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.4s;
+}
+
+.btn-hero:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+/* Seções */
+section {
+    padding: 6rem 0;
+    scroll-margin-top: 100px;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3.5rem;
+    color: #065F46;
+}
+
+/* Estatísticas */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 3.8rem;
+    font-weight: 800;
+    color: #10B981;
+    margin-bottom: 0.5rem;
+}
+
+/* Cards Sustentabilidade */
+.sustentabilidade-card {
+    background: white;
+    padding: 2.25rem;
+    border-radius: 1.75rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    gap: 1.5rem;
+    transition: all 0.4s;
+}
+
+.sustentabilidade-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.sustentabilidade-card span {
+    font-size: 3.5rem;
+    flex-shrink: 0;
+}
+
+/* Galeria */
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 2.5rem;
+}
+
+.galeria-item img {
+    width: 100%;
+    border-radius: 1.75rem;
+    box-shadow: 
