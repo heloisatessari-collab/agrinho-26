@@ -7,6 +7,14 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .hero-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1625246333195-78d9c38ad2d6?w=2000');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
 </head>
 <body class="bg-gray-50 text-gray-800 overflow-x-hidden">
 
@@ -19,8 +27,10 @@
             </div>
             <div class="hidden md:flex gap-10 text-lg font-medium">
                 <a href="#inicio" class="hover:text-emerald-300 transition">Início</a>
+                <a href="#producao" class="hover:text-emerald-300 transition">Produção</a>
                 <a href="#sustentabilidade" class="hover:text-emerald-300 transition">Sustentabilidade</a>
                 <a href="#galeria" class="hover:text-emerald-300 transition">Galeria</a>
+                <a href="#acao" class="hover:text-emerald-300 transition">Participe</a>
             </div>
         </div>
     </nav>
@@ -38,35 +48,55 @@
         </div>
     </section>
 
-    <!-- Sustentabilidade com Imagem 1 -->
+    <!-- Sustentabilidade com imagem Agrinho -->
     <section id="sustentabilidade" class="py-24 bg-emerald-50">
         <div class="max-w-7xl mx-auto px-6">
             <h2 class="text-5xl font-bold text-center mb-16 text-emerald-800">Tecnologias Sustentáveis</h2>
             <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="space-y-8">
-                    <div class="bg-white p-8 rounded-3xl shadow">
-                        <h3 class="text-2xl font-bold mb-3">Agricultura de Precisão</h3>
-                        <p class="text-gray-600">Sensores e IA ajudam o produtor a usar menos recursos.</p>
+                <div class="space-y-10">
+                    <div class="flex gap-6 card-hover bg-white p-8 rounded-3xl transition">
+                        <span class="text-5xl">📡</span>
+                        <div>
+                            <h3 class="text-2xl font-bold">Agricultura de Precisão</h3>
+                            <p class="text-gray-600 mt-3">Sensores, GPS e IA reduzem o uso de fertilizantes.</p>
+                        </div>
                     </div>
                 </div>
-                <img src="assets/agrinho-personagem.jpg" 
-                     alt="Agrinho" 
-                     class="rounded-3xl shadow-2xl w-full">
+                <img src="assets/agrinho-personagem.jpg" alt="Agrinho" class="rounded-3xl shadow-2xl">
             </div>
         </div>
     </section>
 
-    <!-- Galeria com Imagem 2 -->
+    <!-- Galeria com segunda imagem -->
     <section id="galeria" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-5xl font-bold text-center mb-16 text-emerald-800">Agrinho em Ação</h2>
+            <h2 class="text-5xl font-bold text-center mb-16">Agrinho em Ação</h2>
             <div class="grid md:grid-cols-2 gap-10">
                 <div class="text-center">
-                    <img src="assets/agrinho-plantando.jpg" 
-                         alt="Agrinho plantando" 
-                         class="rounded-3xl shadow-2xl mb-6 w-full">
-                    <p class="font-bold text-xl text-emerald-700">Plantando o Futuro!</p>
+                    <img src="assets/agrinho-plantando.jpg" class="rounded-3xl mb-4 shadow-2xl" alt="Agrinho plantando">
+                    <p class="font-bold text-emerald-600 text-xl">Plantando o Futuro</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculadora e Quiz -->
+    <section id="acao" class="py-24 bg-emerald-800 text-white">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-5xl font-bold mb-10">Faça sua parte!</h2>
+           
+            <div class="bg-white/10 backdrop-blur-xl p-12 rounded-3xl mb-12">
+                <h3 class="text-3xl font-bold mb-8">Calculadora de Impacto</h3>
+                <input type="number" id="hectares" value="100" class="w-full p-6 text-3xl rounded-2xl text-center mb-8">
+                <button onclick="calcularImpacto()" class="w-full py-6 bg-white text-emerald-800 text-2xl font-bold rounded-2xl hover:bg-emerald-100">
+                    Calcular Meu Impacto
+                </button>
+                <div id="resultado" class="mt-10 text-3xl font-bold min-h-[120px]"></div>
+            </div>
+
+            <div class="mt-16">
+                <h3 class="text-3xl font-bold mb-8">Teste seu Conhecimento</h3>
+                <div id="quiz" class="bg-white/10 backdrop-blur-xl p-10 rounded-3xl"></div>
             </div>
         </div>
     </section>
