@@ -1,111 +1,189 @@
-// =============================================
-// SCRIPT.JS - AGRINHO 2026
-// =============================================
+/* =============================================
+   STYLE.CSS - AGRINHO 2026 (Versão Premium)
+   ============================================= */
 
-document.addEventListener('DOMContentLoaded', function() {
+:root {
+    --primaria: #065F46;
+    --secundaria: #10B981;
+    --destaque: #34D399;
+    --dark: #022C22;
+}
 
-    // ======================
-    // ANIMAÇÃO DOS NÚMEROS
-    // ======================
-    function animateValue(element, start, end, duration) {
-        let startTimestamp = null;
-        const step = (timestamp) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            const value = Math.floor(progress * (end - start) + start);
-            element.textContent = value;
-            if (progress < 1) window.requestAnimationFrame(step);
-        };
-        window.requestAnimationFrame(step);
+/* Configurações Gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.6;
+    color: #1f2937;
+    overflow-x: hidden;
+}
+
+/* Navbar */
+nav {
+    background-color: var(--dark);
+    color: white;
+    position: fixed;
+    width: 100%;
+    z-index: 50;
+    transition: all 0.4s ease;
+}
+
+nav.scrolled {
+    background-color: rgba(2, 44, 34, 0.97);
+    backdrop-filter: blur(12px);
+}
+
+/* Links da Navbar */
+.nav-link {
+    position: relative;
+    transition: color 0.3s;
+}
+
+.nav-link:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -6px;
+    left: 0;
+    background: linear-gradient(to right, var(--secundaria), var(--destaque));
+    transition: width 0.4s ease;
+}
+
+.nav-link:hover:after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero-bg {
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.75)), 
+                      url('https://images.unsplash.com/photo-1625246333195-78d9c38ad2d6?w=2000');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    color: white;
+    position: relative;
+}
+
+/* Títulos */
+h1, h2 {
+    font-family: 'Playfair Display', sans-serif;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+h2 {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 4rem;
+    color: var(--primaria);
+}
+
+/* Cards */
+.card-hover {
+    transition: all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+    border: 1px solid #f3f4f6;
+}
+
+.card-hover:hover {
+    transform: translateY(-18px);
+    box-shadow: 0 30px 60px -15px rgb(16 185 129 / 0.25);
+    border-color: var(--secundaria);
+}
+
+/* Imagens */
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 1.5rem;
+    transition: transform 0.6s ease;
+}
+
+img:hover {
+    transform: scale(1.05);
+}
+
+/* Calculadora e Quiz */
+input[type="number"] {
+    background-color: rgba(255,255,255,0.08);
+    color: white;
+    border: 2px solid rgba(255,255,255,0.25);
+    border-radius: 1.25rem;
+    padding: 1.75rem 1rem;
+    font-size: 2.8rem;
+    text-align: center;
+    width: 100%;
+    transition: all 0.3s;
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border-color: var(--destaque);
+    box-shadow: 0 0 0 5px rgba(52, 211, 153, 0.2);
+}
+
+/* Botões */
+button {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: 600;
+}
+
+button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 25px -5px rgb(16 185 129 / 0.3);
+}
+
+/* Quiz */
+#quiz button {
+    background-color: rgba(255,255,255,0.1);
+    border: 2px solid rgba(255,255,255,0.2);
+    color: white;
+    transition: all 0.3s;
+}
+
+#quiz button:hover {
+    background-color: rgba(255,255,255,0.2);
+    border-color: var(--destaque);
+    transform: translateX(8px);
+}
+
+/* Seções */
+section {
+    padding: 7rem 0;
+    scroll-margin-top: 90px;
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark);
+    color: #a1a1aa;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 2.4rem;
     }
-
-    // ======================
-    // CALCULADORA DE IMPACTO
-    // ======================
-    window.calcularImpacto = function() {
-        const hectares = parseFloat(document.getElementById('hectares').value) || 0;
-        const resultado = document.getElementById('resultado');
-        
-        if (hectares <= 0) {
-            resultado.innerHTML = `<p class="text-amber-300">Digite um número válido de hectares.</p>`;
-            return;
-        }
-
-        const emissao = (hectares * 2.8).toFixed(1);
-        resultado.innerHTML = `
-            <p class="text-emerald-200">Em <span class="text-4xl font-bold">${hectares}</span> hectares você emite aproximadamente:</p>
-            <p class="text-6xl font-black text-white mt-4">${emissao} ton CO₂/ano</p>
-            <p class="mt-6 text-emerald-100">Com práticas sustentáveis podemos reduzir até 40%!</p>
-        `;
-    };
-
-    // ======================
-    // QUIZ
-    // ======================
-    const questions = [
-        { 
-            q: "Qual gás é mais emitido pela pecuária?", 
-            options: ["Metano", "CO₂", "Óxido Nitroso"], 
-            a: "Metano" 
-        },
-        { 
-            q: "O que significa ILPF?", 
-            options: ["Integração Lavoura-Pecuária-Floresta", "Irrigação Local", "Inteligência Artificial"], 
-            a: "Integração Lavoura-Pecuária-Floresta" 
-        },
-        { 
-            q: "Qual tecnologia ajuda a economizar água?", 
-            options: ["Drones", "Irrigação Inteligente", "Tratores"], 
-            a: "Irrigação Inteligente" 
-        }
-    ];
-
-    let current = 0;
-
-    function loadQuiz() {
-        const quizContainer = document.getElementById('quiz');
-        let html = `<p class="text-2xl mb-8">${questions[current].q}</p>`;
-        
-        questions[current].options.forEach((opt, index) => {
-            html += `
-                <button onclick="answerQuiz(${index})" 
-                        class="block w-full p-5 mb-4 text-left border border-white/30 hover:border-white rounded-2xl transition">
-                    ${opt}
-                </button>`;
-        });
-        quizContainer.innerHTML = html;
+    
+    .hero-bg h1 {
+        font-size: 2.8rem;
     }
+    
+    section {
+        padding: 5rem 0;
+    }
+}
 
-    window.answerQuiz = function(selectedIndex) {
-        const correct = questions[current].a;
-        const selected = questions[current].options[selectedIndex];
-        const quizContainer = document.getElementById('quiz');
-
-        if (selected === correct) {
-            quizContainer.innerHTML = `<p class="text-4xl font-bold text-emerald-300">✅ Excelente! Você acertou!</p>`;
-        } else {
-            quizContainer.innerHTML = `<p class="text-4xl font-bold text-red-300">A resposta certa era: <strong>${correct}</strong></p>`;
-        }
-
-        setTimeout(() => {
-            current = (current + 1) % questions.length;
-            loadQuiz();
-        }, 2500);
-    };
-
-    // ======================
-    // INICIALIZAÇÃO
-    // ======================
-    loadQuiz();
-    window.calcularImpacto(); // Calcula com valor inicial
-
-    // Smooth Scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function(e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute("href")).scrollIntoView({ 
-                behavior: "smooth" 
-            });
-        });
-    });
-});
+/* Efeito suave no scroll */
+html {
+    scroll-behavior: smooth;
+}
