@@ -1,189 +1,132 @@
-/* =============================================
-   STYLE.CSS - AGRINHO 2026 (Versão Premium)
-   ============================================= */
+// =============================================
+// SCRIPT.JS - AGRINHO 2026 (Versão Premium)
+// =============================================
 
-:root {
-    --primaria: #065F46;
-    --secundaria: #10B981;
-    --destaque: #34D399;
-    --dark: #022C22;
-}
+document.addEventListener('DOMContentLoaded', function() {
 
-/* Configurações Gerais */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    // ======================
+    // CALCULADORA DE IMPACTO
+    // ======================
+    window.calcularImpacto = function() {
+        const hectares = parseFloat(document.getElementById('hectares').value) || 0;
+        const resultado = document.getElementById('resultado');
+        
+        if (hectares <= 0) {
+            resultado.innerHTML = `
+                <p class="text-amber-300 text-center">Por favor, digite um número válido de hectares.</p>
+            `;
+            return;
+        }
 
-body {
-    font-family: 'Inter', system-ui, sans-serif;
-    line-height: 1.6;
-    color: #1f2937;
-    overflow-x: hidden;
-}
+        const emissaoCO2 = (hectares * 2.8).toFixed(1);
+        const aguaEconomizada = Math.round(hectares * 8500).toLocaleString('pt-BR');
 
-/* Navbar */
-nav {
-    background-color: var(--dark);
-    color: white;
-    position: fixed;
-    width: 100%;
-    z-index: 50;
-    transition: all 0.4s ease;
-}
+        resultado.innerHTML = `
+            <div class="text-center">
+                <p class="text-emerald-200 text-lg">Em <span class="font-bold text-white">${hectares}</span> hectares você emite aproximadamente:</p>
+                <p class="text-6xl font-black text-white mt-4 mb-2">${emissaoCO2} ton CO₂/ano</p>
+                <p class="text-emerald-100">Com práticas sustentáveis você pode:</p>
+                <p class="text-3xl font-bold text-emerald-300 mt-6">Economizar até ${aguaEconomizada} litros de água por ano</p>
+            </div>
+        `;
+    };
 
-nav.scrolled {
-    background-color: rgba(2, 44, 34, 0.97);
-    backdrop-filter: blur(12px);
-}
+    // ======================
+    // QUIZ INTERATIVO
+    // ======================
+    const questions = [
+        {
+            q: "Qual gás é mais emitido pela pecuária?",
+            options: ["Metano", "CO₂", "Óxido Nitroso"],
+            a: "Metano"
+        },
+        {
+            q: "O que significa ILPF?",
+            options: ["Integração Lavoura-Pecuária-Floresta", "Irrigação Local", "Inteligência Artificial"],
+            a: "Integração Lavoura-Pecuária-Floresta"
+        },
+        {
+            q: "Qual tecnologia ajuda a economizar água?",
+            options: ["Drones", "Irrigação Inteligente", "Tratores"],
+            a: "Irrigação Inteligente"
+        }
+    ];
 
-/* Links da Navbar */
-.nav-link {
-    position: relative;
-    transition: color 0.3s;
-}
+    let currentQuestion = 0;
 
-.nav-link:after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 3px;
-    bottom: -6px;
-    left: 0;
-    background: linear-gradient(to right, var(--secundaria), var(--destaque));
-    transition: width 0.4s ease;
-}
+    function loadQuiz() {
+        const quizContainer = document.getElementById('quiz');
+        if (!quizContainer) return;
 
-.nav-link:hover:after {
-    width: 100%;
-}
+        let html = `<p class="text-2xl mb-8 font-medium">${questions[currentQuestion].q}</p>`;
+        
+        questions[currentQuestion].options.forEach((option, index) => {
+            html += `
+                <button onclick="answerQuiz(${index})" 
+                        class="block w-full p-5 mb-4 text-left border border-white/30 hover:border-emerald-400 rounded-2xl transition-all">
+                    ${option}
+                </button>`;
+        });
 
-/* Hero Section */
-.hero-bg {
-    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.75)), 
-                      url('https://images.unsplash.com/photo-1625246333195-78d9c38ad2d6?w=2000');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    color: white;
-    position: relative;
-}
-
-/* Títulos */
-h1, h2 {
-    font-family: 'Playfair Display', sans-serif;
-    font-weight: 700;
-    line-height: 1.1;
-}
-
-h2 {
-    font-size: 3rem;
-    text-align: center;
-    margin-bottom: 4rem;
-    color: var(--primaria);
-}
-
-/* Cards */
-.card-hover {
-    transition: all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
-    border: 1px solid #f3f4f6;
-}
-
-.card-hover:hover {
-    transform: translateY(-18px);
-    box-shadow: 0 30px 60px -15px rgb(16 185 129 / 0.25);
-    border-color: var(--secundaria);
-}
-
-/* Imagens */
-img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 1.5rem;
-    transition: transform 0.6s ease;
-}
-
-img:hover {
-    transform: scale(1.05);
-}
-
-/* Calculadora e Quiz */
-input[type="number"] {
-    background-color: rgba(255,255,255,0.08);
-    color: white;
-    border: 2px solid rgba(255,255,255,0.25);
-    border-radius: 1.25rem;
-    padding: 1.75rem 1rem;
-    font-size: 2.8rem;
-    text-align: center;
-    width: 100%;
-    transition: all 0.3s;
-}
-
-input[type="number"]:focus {
-    outline: none;
-    border-color: var(--destaque);
-    box-shadow: 0 0 0 5px rgba(52, 211, 153, 0.2);
-}
-
-/* Botões */
-button {
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    font-weight: 600;
-}
-
-button:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 15px 25px -5px rgb(16 185 129 / 0.3);
-}
-
-/* Quiz */
-#quiz button {
-    background-color: rgba(255,255,255,0.1);
-    border: 2px solid rgba(255,255,255,0.2);
-    color: white;
-    transition: all 0.3s;
-}
-
-#quiz button:hover {
-    background-color: rgba(255,255,255,0.2);
-    border-color: var(--destaque);
-    transform: translateX(8px);
-}
-
-/* Seções */
-section {
-    padding: 7rem 0;
-    scroll-margin-top: 90px;
-}
-
-/* Footer */
-footer {
-    background-color: var(--dark);
-    color: #a1a1aa;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    h2 {
-        font-size: 2.4rem;
+        quizContainer.innerHTML = html;
     }
-    
-    .hero-bg h1 {
-        font-size: 2.8rem;
-    }
-    
-    section {
-        padding: 5rem 0;
-    }
-}
 
-/* Efeito suave no scroll */
-html {
-    scroll-behavior: smooth;
-}
+    window.answerQuiz = function(selectedIndex) {
+        const correctAnswer = questions[currentQuestion].a;
+        const selectedAnswer = questions[currentQuestion].options[selectedIndex];
+        const quizContainer = document.getElementById('quiz');
+
+        if (selectedAnswer === correctAnswer) {
+            quizContainer.innerHTML = `
+                <p class="text-4xl font-bold text-emerald-300 text-center py-8">
+                    ✅ Excelente! Você acertou!
+                </p>`;
+        } else {
+            quizContainer.innerHTML = `
+                <p class="text-3xl font-bold text-red-300 text-center py-8">
+                    A resposta certa era: <strong>${correctAnswer}</strong>
+                </p>`;
+        }
+
+        // Carrega próxima pergunta
+        setTimeout(() => {
+            currentQuestion = (currentQuestion + 1) % questions.length;
+            loadQuiz();
+        }, 2800);
+    };
+
+    // ======================
+    // EFEITO NO NAVBAR (scroll)
+    // ======================
+    function handleNavbarScroll() {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 50) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    }
+
+    // ======================
+    // INICIALIZAÇÃO
+    // ======================
+    loadQuiz();
+    window.calcularImpacto(); // Calcula com valor inicial
+
+    // Smooth Scroll para links da navegação
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Evento de scroll para navbar
+    window.addEventListener('scroll', handleNavbarScroll);
+
+});
