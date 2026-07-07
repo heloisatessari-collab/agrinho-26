@@ -3,257 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Agrinho 2026 - O futuro da agricultura sustentável está aqui.">
-    <title>Agrinho 2026 | Agro Inteligente • Futuro Verde</title>
+    <meta name="description" content="Agrinho 2026 - Agricultura sustentável e tecnologia no campo.">
+    <title>Agrinho 2026 | Agro Forte e Sustentável</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@700;900&display=swap');
-        
-        :root {
-            --emerald: #10b981;
-        }
-        
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
-        }
-        
-        .hero-bg {
-            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), 
-                             url('https://images.unsplash.com/photo-1625246333195-78d9c38ad2d6?w=2000');
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .nav-link {
-            position: relative;
-        }
-        .nav-link:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 3px;
-            bottom: -6px;
-            left: 0;
-            background: linear-gradient(to right, #10b981, #34d399);
-            transition: width 0.4s ease;
-        }
-        .nav-link:hover:after { width: 100%; }
-
-        .section-title {
-            font-family: 'Playfair Display', sans-serif;
-            letter-spacing: -0.04em;
-        }
-
-        .card {
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .card:hover {
-            transform: translateY(-20px) scale(1.03);
-            box-shadow: 0 35px 60px -15px rgb(16 185 129 / 0.3);
-        }
-
-        .glow {
-            box-shadow: 0 0 60px -10px rgb(16 185 129);
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-50 text-gray-800 overflow-x-hidden">
+<body>
 
-    <!-- Navbar Premium -->
-    <nav class="bg-emerald-950/95 backdrop-blur-xl text-white fixed w-full z-50 border-b border-emerald-900">
-        <div class="max-w-7xl mx-auto px-8 py-6 flex justify-between items-center">
-            <div class="flex items-center gap-4">
-                <div class="w-11 h-11 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-2xl flex items-center justify-center text-3xl shadow-inner">
-                    🌱
-                </div>
-                <div>
-                    <h1 class="text-3xl font-black tracking-tighter">AGRINHO</h1>
-                    <p class="text-[10px] text-emerald-400 -mt-1 tracking-[2px]">2026</p>
-                </div>
+    <!-- Navbar -->
+    <nav class="bg-emerald-900 text-white fixed w-full z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-seedling text-4xl text-emerald-400"></i>
+                <h1 class="text-3xl font-bold">AGRINHO 2026</h1>
             </div>
-
-            <div class="hidden md:flex gap-10 text-lg font-medium">
+            
+            <div class="hidden md:flex gap-8 text-lg">
                 <a href="#inicio" class="nav-link">Início</a>
-                <a href="#sobre" class="nav-link">Sobre</a>
                 <a href="#sustentabilidade" class="nav-link">Sustentabilidade</a>
                 <a href="#galeria" class="nav-link">Galeria</a>
                 <a href="#impacto" class="nav-link">Impacto</a>
             </div>
-
-            <a href="#participar" 
-               class="px-8 py-4 bg-emerald-500 hover:bg-emerald-400 font-semibold rounded-3xl transition-all duration-300 shadow-lg shadow-emerald-500/30">
-                Quero Participar
+            
+            <a href="#participar" class="bg-emerald-500 hover:bg-emerald-600 px-8 py-3 rounded-xl font-medium transition-colors">
+                Participar
             </a>
         </div>
     </nav>
 
-    <!-- Hero Impactante -->
-    <section id="inicio" class="hero-bg h-screen flex items-center text-white relative">
-        <div class="max-w-6xl mx-auto px-8 text-center z-10">
-            <div class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-lg px-8 py-3 rounded-3xl mb-8 border border-white/20">
-                <span class="relative flex h-3 w-3">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-400"></span>
-                </span>
-                <span class="uppercase text-sm tracking-widest font-medium">Edição 2026 • Ao Vivo</span>
-            </div>
-
-            <h1 class="text-7xl md:text-8xl font-black leading-none mb-8 section-title">
-                AGRO FORTE.<br>
-                <span class="bg-gradient-to-r from-emerald-300 to-teal-300 bg-clip-text text-transparent">FUTURO VERDE.</span>
+    <!-- Hero -->
+    <section id="inicio" class="hero-bg h-screen flex items-center text-white">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h1 class="text-6xl md:text-7xl font-bold leading-tight mb-6">
+                AGRO FORTE,<br>
+                <span class="text-emerald-300">FUTURO SUSTENTÁVEL</span>
             </h1>
-
-            <p class="text-2xl md:text-3xl max-w-3xl mx-auto text-white/90 mb-12">
-                O maior evento de agricultura sustentável do Brasil está chegando.
+            <p class="text-2xl max-w-2xl mx-auto mb-10">
+                Equilíbrio entre produção e preservação do meio ambiente
             </p>
-
-            <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                <a href="#participar" class="px-12 py-6 bg-emerald-500 hover:bg-white hover:text-emerald-900 text-xl font-bold rounded-3xl transition-all text-lg shadow-2xl">
-                    Participar do Evento
-                </a>
-                <a href="#impacto" class="px-12 py-6 border-2 border-white/80 hover:bg-white/10 text-xl font-medium rounded-3xl transition-all">
-                    Ver Impacto Real
-                </a>
-            </div>
-        </div>
-
-        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center">
-            <p class="text-xs tracking-widest mb-3">ROLE PARA CONHECER</p>
-            <i class="fa-solid fa-chevron-down text-4xl animate-bounce"></i>
-        </div>
-    </section>
-
-    <!-- Sobre -->
-    <section id="sobre" class="py-28 bg-white">
-        <div class="max-w-7xl mx-auto px-8">
-            <div class="grid md:grid-cols-2 gap-20 items-center">
-                <div>
-                    <h2 class="text-6xl font-bold section-title text-emerald-900 leading-none mb-8">
-                        Tecnologia a serviço da natureza
-                    </h2>
-                    <p class="text-2xl text-gray-600">
-                        O Agrinho 2026 une inovação, educação e ação prática para construir um agro mais produtivo e sustentável.
-                    </p>
-                </div>
-                <div class="grid grid-cols-2 gap-8 text-center">
-                    <div class="card bg-emerald-50 p-10 rounded-3xl">
-                        <div class="text-6xl mb-6">📍</div>
-                        <h4 class="font-bold text-3xl">+12</h4>
-                        <p class="text-emerald-700">Estados participantes</p>
-                    </div>
-                    <div class="card bg-emerald-50 p-10 rounded-3xl">
-                        <div class="text-6xl mb-6">👥</div>
-                        <h4 class="font-bold text-3xl">8.000+</h4>
-                        <p class="text-emerald-700">Jovens e produtores</p>
-                    </div>
-                </div>
-            </div>
+            <a href="#participar" class="inline-block bg-white text-emerald-900 px-10 py-5 rounded-2xl text-xl font-semibold hover:bg-emerald-100 transition-colors">
+                Quero Participar
+            </a>
         </div>
     </section>
 
     <!-- Sustentabilidade -->
-    <section id="sustentabilidade" class="py-28 bg-emerald-50">
-        <div class="max-w-7xl mx-auto px-8">
-            <h2 class="text-center section-title text-6xl font-bold mb-20 text-emerald-900">Pilares da Mudança</h2>
+    <section id="sustentabilidade" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-5xl font-bold text-center mb-16 text-emerald-900">Sustentabilidade no Campo</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card-hover bg-white p-8 rounded-3xl border border-gray-100">
+                    <i class="fa-solid fa-microchip text-5xl text-emerald-600 mb-6"></i>
+                    <h3 class="text-2xl font-bold mb-3">Agricultura de Precisão</h3>
+                    <p class="text-gray-600">Tecnologia para otimizar recursos e aumentar a eficiência.</p>
+                </div>
+                <div class="card-hover bg-white p-8 rounded-3xl border border-gray-100">
+                    <i class="fa-solid fa-leaf text-5xl text-emerald-600 mb-6"></i>
+                    <h3 class="text-2xl font-bold mb-3">Práticas Regenerativas</h3>
+                    <p class="text-gray-600">Recuperação do solo e preservação da biodiversidade.</p>
+                </div>
+                <div class="card-hover bg-white p-8 rounded-3xl border border-gray-100">
+                    <i class="fa-solid fa-droplet text-5xl text-emerald-600 mb-6"></i>
+                    <h3 class="text-2xl font-bold mb-3">Gestão de Recursos Hídricos</h3>
+                    <p class="text-gray-600">Uso consciente e eficiente da água no campo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria -->
+    <section id="galeria" class="py-24 bg-emerald-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-5xl font-bold text-center mb-16 text-emerald-900">Tecnologia e Natureza</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="rounded-3xl overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad2d6" alt="Tecnologia no campo">
+                </div>
+                <div class="rounded-3xl overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1500595046743-3a1e6a9c0d3d" alt="Agricultura sustentável">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impacto + Quiz -->
+    <section id="impacto" class="py-24 bg-white">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="text-5xl font-bold text-center mb-16 text-emerald-900">Faça sua parte</h2>
             
-            <div class="grid md:grid-cols-3 gap-10">
-                <div class="card bg-white p-10 rounded-3xl">
-                    <i class="fa-solid fa-microchip text-5xl text-emerald-500 mb-6"></i>
-                    <h3 class="text-3xl font-bold mb-4">Inteligência no Campo</h3>
-                    <p class="text-gray-600">Drones, sensores IoT e IA para decisões precisas e sustentáveis.</p>
-                </div>
-                <div class="card bg-white p-10 rounded-3xl">
-                    <i class="fa-solid fa-seedling text-5xl text-emerald-500 mb-6"></i>
-                    <h3 class="text-3xl font-bold mb-4">Solo Vivo</h3>
-                    <p class="text-gray-600">Práticas regenerativas que restauram a saúde do solo e aumentam a produtividade.</p>
-                </div>
-                <div class="card bg-white p-10 rounded-3xl">
-                    <i class="fa-solid fa-hand-holding-droplet text-5xl text-emerald-500 mb-6"></i>
-                    <h3 class="text-3xl font-bold mb-4">Água Inteligente</h3>
-                    <p class="text-gray-600">Gestão eficiente dos recursos hídricos com tecnologia de ponta.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Galeria + Impacto -->
-    <section id="impacto" class="py-28 bg-white">
-        <div class="max-w-7xl mx-auto px-8">
-            <h2 class="text-center section-title text-6xl font-bold mb-16 text-emerald-900">Resultados Reais</h2>
             <div class="grid md:grid-cols-2 gap-12">
-                <div class="relative rounded-3xl overflow-hidden glow">
-                    <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad2d6" class="w-full" alt="Campo">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-10">
-                        <div class="text-white">
-                            <p class="text-emerald-400 font-medium">+47% de produtividade</p>
-                            <p class="text-4xl font-bold">com 38% menos água</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div id="calculadora" class="bg-emerald-900 text-white p-12 rounded-3xl">
-                    <h3 class="text-4xl font-bold mb-8">Calculadora de Impacto</h3>
-                    <input type="number" id="hectares" value="150" 
-                           class="w-full bg-white/10 border border-white/30 text-6xl text-center py-8 rounded-3xl mb-8 focus:outline-none">
-                    <button onclick="calcular()" 
-                            class="w-full py-8 text-2xl font-bold bg-emerald-500 hover:bg-emerald-400 rounded-3xl transition-all">
-                        Calcular Meu Impacto
+                <!-- Calculadora -->
+                <div class="bg-emerald-900 text-white p-12 rounded-3xl">
+                    <h3 class="text-3xl font-bold mb-8">Calculadora de Impacto</h3>
+                    <input type="number" id="hectares" value="100" class="mb-8">
+                    <button onclick="calcularImpacto()" class="w-full py-6 bg-emerald-500 hover:bg-emerald-400 text-xl font-semibold rounded-2xl">
+                        Calcular Impacto
                     </button>
-                    <div id="resultado" class="mt-12 text-center text-3xl font-light min-h-[120px]"></div>
+                    <div id="resultado" class="mt-12 text-2xl min-h-[140px]"></div>
+                </div>
+
+                <!-- Quiz -->
+                <div class="bg-emerald-900 text-white p-12 rounded-3xl">
+                    <h3 class="text-3xl font-bold mb-8">Teste seu Conhecimento</h3>
+                    <div id="quiz" class="min-h-[300px]"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Call to Action Final -->
-    <section id="participar" class="py-32 bg-gradient-to-br from-emerald-900 to-teal-900 text-white text-center">
-        <div class="max-w-4xl mx-auto px-8">
-            <h2 class="text-6xl md:text-7xl font-black mb-10 section-title">Pronto para fazer parte da revolução?</h2>
-            <p class="text-2xl mb-12 text-emerald-100">Inscreva-se agora e seja protagonista do agro do futuro.</p>
-            <button onclick="alert('Inscrição realizada com sucesso! (Simulação) 🎉')" 
-                    class="px-16 py-8 text-3xl font-bold bg-white text-emerald-900 rounded-3xl hover:scale-105 transition-transform shadow-2xl">
-                Quero Participar do Agrinho 2026
+    <!-- CTA -->
+    <section id="participar" class="py-24 bg-emerald-900 text-white text-center">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-5xl font-bold mb-8">Pronto para transformar o agro?</h2>
+            <p class="text-xl mb-10">Junte-se ao Agrinho 2026 e faça a diferença.</p>
+            <button onclick="alert('Inscrição registrada com sucesso! 🎉')" 
+                    class="bg-white text-emerald-900 px-12 py-6 rounded-2xl text-xl font-semibold hover:bg-emerald-100">
+                Inscrever-se Agora
             </button>
         </div>
     </section>
 
-    <footer class="bg-emerald-950 text-emerald-300 py-16 text-center">
-        <p class="text-2xl font-bold mb-2">AGRINHO 2026</p>
-        <p class="mb-6">Construindo o futuro sustentável da agricultura brasileira</p>
-        <p class="text-sm">© 2026 • Feito com ❤️ e muita dedicação</p>
+    <footer class="bg-emerald-950 text-emerald-200 py-12 text-center">
+        <p class="text-xl font-medium">AGRINHO 2026</p>
+        <p class="mt-2">© 2026 - Todos os direitos reservados</p>
     </footer>
 
-    <script>
-        function calcular() {
-            const ha = parseFloat(document.getElementById('hectares').value) || 0;
-            const resultado = document.getElementById('resultado');
-            
-            const agua = Math.round(ha * 9200).toLocaleString('pt-BR');
-            const co2 = Math.round(ha * 14);
-            
-            resultado.innerHTML = `
-                <div class="space-y-6">
-                    <p class="text-emerald-400 text-xl">Com práticas sustentáveis você pode economizar:</p>
-                    <p class="text-5xl font-bold">${agua} <span class="text-2xl font-normal">litros de água/ano</span></p>
-                    <p class="text-4xl">e reduzir <span class="text-emerald-400">${co2}</span> toneladas de CO₂</p>
-                </div>
-            `;
-        }
-
-        // Scroll suave
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                if (this.getAttribute('href') !== '#') {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
