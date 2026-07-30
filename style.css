@@ -1,5 +1,5 @@
 /* =============================================
-   STYLE.CSS - AGRINHO 2026 (Versão Premium)
+   STYLE.CSS - AGRINHO 2026 (Versão Final)
    ============================================= */
 
 :root {
@@ -9,7 +9,7 @@
     --dark: #022C22;
 }
 
-/* Configurações Gerais */
+/* Reset e Base */
 * {
     margin: 0;
     padding: 0;
@@ -21,6 +21,23 @@ body {
     line-height: 1.6;
     color: #1f2937;
     overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Acessibilidade */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
 }
 
 /* Navbar */
@@ -36,9 +53,10 @@ nav {
 nav.scrolled {
     background-color: rgba(2, 44, 34, 0.97);
     backdrop-filter: blur(12px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
 }
 
-/* Links da Navbar */
+/* Links da Navbar (Desktop) */
 .nav-link {
     position: relative;
     transition: color 0.3s;
@@ -59,9 +77,21 @@ nav.scrolled {
     width: 100%;
 }
 
-/* Hero Section */
+/* Links do Menu Mobile */
+.nav-link-mobile {
+    color: white;
+    padding: 0.5rem 0;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.nav-link-mobile:hover {
+    color: var(--destaque);
+    transform: translateX(6px);
+}
+
+/* Hero */
 .hero-bg {
-    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.75)), 
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.75)),
                       url('https://images.unsplash.com/photo-1625246333195-78d9c38ad2d6?w=2000');
     background-size: cover;
     background-position: center;
@@ -80,46 +110,43 @@ h1, h2 {
     line-height: 1.1;
 }
 
-h2 {
-    font-size: 3rem;
-    text-align: center;
-    margin-bottom: 4rem;
-    color: var(--primaria);
-}
-
 /* Cards */
 .card-hover {
-    transition: all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid #f3f4f6;
 }
 
 .card-hover:hover {
-    transform: translateY(-18px);
-    box-shadow: 0 30px 60px -15px rgb(16 185 129 / 0.25);
+    transform: translateY(-12px);
+    box-shadow: 0 25px 50px -12px rgb(16 185 129 / 0.25);
     border-color: var(--secundaria);
 }
 
 /* Imagens */
 img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     display: block;
-    border-radius: 1.5rem;
     transition: transform 0.6s ease;
 }
 
-img:hover {
-    transform: scale(1.05);
+.rounded-3xl {
+    border-radius: 1.5rem;
 }
 
-/* Calculadora e Quiz */
+img:hover {
+    transform: scale(1.04);
+}
+
+/* Calculadora - Input */
 input[type="number"] {
-    background-color: rgba(255,255,255,0.08);
+    background-color: rgba(255, 255, 255, 0.08);
     color: white;
-    border: 2px solid rgba(255,255,255,0.25);
+    border: 2px solid rgba(255, 255, 255, 0.25);
     border-radius: 1.25rem;
-    padding: 1.75rem 1rem;
-    font-size: 2.8rem;
+    padding: 1.5rem 1rem;
+    font-size: 2.5rem;
     text-align: center;
     width: 100%;
     transition: all 0.3s;
@@ -131,35 +158,62 @@ input[type="number"]:focus {
     box-shadow: 0 0 0 5px rgba(52, 211, 153, 0.2);
 }
 
+/* Formulário de Inscrição */
+#form-inscricao input[type="text"],
+#form-inscricao input[type="email"] {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 1rem;
+    padding: 1rem 1.25rem;
+    font-size: 1.1rem;
+    width: 100%;
+    transition: all 0.3s;
+}
+
+#form-inscricao input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+#form-inscricao input:focus {
+    outline: none;
+    border-color: var(--destaque);
+    box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.2);
+}
+
 /* Botões */
 button {
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     font-weight: 600;
+    cursor: pointer;
 }
 
 button:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 15px 25px -5px rgb(16 185 129 / 0.3);
+    transform: translateY(-3px);
 }
 
 /* Quiz */
 #quiz button {
-    background-color: rgba(255,255,255,0.1);
-    border: 2px solid rgba(255,255,255,0.2);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
     color: white;
     transition: all 0.3s;
 }
 
 #quiz button:hover {
-    background-color: rgba(255,255,255,0.2);
+    background-color: rgba(255, 255, 255, 0.18);
     border-color: var(--destaque);
     transform: translateX(8px);
 }
 
 /* Seções */
 section {
-    padding: 7rem 0;
     scroll-margin-top: 90px;
+}
+
+/* Vídeo */
+#video iframe {
+    border-radius: 1.5rem;
 }
 
 /* Footer */
@@ -170,20 +224,24 @@ footer {
 
 /* Responsividade */
 @media (max-width: 768px) {
-    h2 {
-        font-size: 2.4rem;
-    }
-    
     .hero-bg h1 {
         font-size: 2.8rem;
     }
-    
-    section {
-        padding: 5rem 0;
+
+    input[type="number"] {
+        font-size: 2rem;
+        padding: 1.2rem 0.8rem;
+    }
+
+    .card-hover:hover {
+        transform: translateY(-8px);
     }
 }
 
-/* Efeito suave no scroll */
-html {
-    scroll-behavior: smooth;
+/* Melhora de foco para acessibilidade */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 3px solid var(--destaque);
+    outline-offset: 3px;
 }
