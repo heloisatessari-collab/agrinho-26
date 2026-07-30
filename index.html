@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Agrinho 2026 - O futuro da agricultura sustentável brasileira.">
     <title>Agrinho 2026 | Agro Forte • Futuro Verde</title>
-    
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&family=Abril+Fatface&family=Gravitas+One&family=Lobster&display=swap" rel="stylesheet">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -13,26 +18,50 @@
 <body class="bg-gray-50">
 
     <!-- Navbar -->
-    <nav class="bg-emerald-950 text-white fixed w-full z-50 border-b border-emerald-900">
+    <nav class="bg-emerald-950 text-white fixed w-full z-50 border-b border-emerald-900" role="navigation" aria-label="Menu principal">
         <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            
+            <!-- Logo -->
             <div class="flex items-center gap-4">
-                <div class="w-12 h-12 bg-emerald-500 rounded-2xl flex items-center justify-center text-3xl">🌱</div>
+                <div class="w-12 h-12 bg-emerald-500 rounded-2xl flex items-center justify-center text-3xl" aria-hidden="true">🌱</div>
                 <div>
                     <h1 class="text-3xl font-bold tracking-tight">AGRINHO</h1>
                     <p class="text-xs text-emerald-400 -mt-1">2026</p>
                 </div>
             </div>
-            
+
+            <!-- Links Desktop -->
             <div class="hidden md:flex gap-10 text-lg font-medium">
                 <a href="#inicio" class="nav-link">Início</a>
                 <a href="#sustentabilidade" class="nav-link">Sustentabilidade</a>
                 <a href="#galeria" class="nav-link">Galeria</a>
+                <a href="#video" class="nav-link">Vídeo</a>
                 <a href="#impacto" class="nav-link">Impacto</a>
             </div>
-            
-            <a href="#participar" class="bg-emerald-500 hover:bg-emerald-400 px-8 py-3.5 rounded-2xl font-semibold transition-all">
+
+            <!-- Botão Participar (Desktop) -->
+            <a href="#participar" class="hidden md:inline-block bg-emerald-500 hover:bg-emerald-400 px-8 py-3.5 rounded-2xl font-semibold transition-all">
                 Participar do Evento
             </a>
+
+            <!-- Botão Hamburger (Mobile) -->
+            <button id="menu-btn" class="md:hidden text-white text-3xl focus:outline-none" aria-label="Abrir menu" aria-expanded="false">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-emerald-950 border-t border-emerald-900">
+            <div class="flex flex-col px-6 py-6 gap-5 text-lg font-medium">
+                <a href="#inicio" class="nav-link-mobile">Início</a>
+                <a href="#sustentabilidade" class="nav-link-mobile">Sustentabilidade</a>
+                <a href="#galeria" class="nav-link-mobile">Galeria</a>
+                <a href="#video" class="nav-link-mobile">Vídeo</a>
+                <a href="#impacto" class="nav-link-mobile">Impacto</a>
+                <a href="#participar" class="bg-emerald-500 hover:bg-emerald-400 text-center px-6 py-3 rounded-2xl font-semibold transition-all mt-2">
+                    Participar do Evento
+                </a>
+            </div>
         </div>
     </nav>
 
@@ -55,22 +84,46 @@
     <!-- Sustentabilidade -->
     <section id="sustentabilidade" class="py-28 bg-white">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-5xl font-bold text-center mb-20 text-emerald-900">Pilares da Sustentabilidade</h2>
+            <h2 class="text-5xl font-bold text-center mb-6 text-emerald-900">Pilares da Sustentabilidade</h2>
+            <p class="text-center text-gray-600 text-xl max-w-3xl mx-auto mb-20">
+                Três caminhos concretos para unir produtividade e preservação no campo brasileiro.
+            </p>
+
             <div class="grid md:grid-cols-3 gap-10">
+                <!-- Card 1 -->
                 <div class="card-hover bg-white p-10 rounded-3xl border border-emerald-100">
-                    <i class="fa-solid fa-microchip text-5xl text-emerald-600 mb-6"></i>
+                    <i class="fa-solid fa-microchip text-5xl text-emerald-600 mb-6" aria-hidden="true"></i>
                     <h3 class="text-3xl font-bold mb-4">Agricultura de Precisão</h3>
-                    <p class="text-gray-600">Drones, sensores e IA para decisões mais inteligentes no campo.</p>
+                    <p class="text-gray-600 mb-4">
+                        Uso de drones, sensores e inteligência artificial para aplicar defensivos e fertilizantes apenas onde é necessário.
+                    </p>
+                    <p class="text-gray-600">
+                        Estudos da Embrapa mostram que essa tecnologia pode reduzir o uso de insumos em até <strong>30%</strong> e aumentar a produtividade em até <strong>20%</strong>.
+                    </p>
                 </div>
+
+                <!-- Card 2 -->
                 <div class="card-hover bg-white p-10 rounded-3xl border border-emerald-100">
-                    <i class="fa-solid fa-seedling text-5xl text-emerald-600 mb-6"></i>
+                    <i class="fa-solid fa-seedling text-5xl text-emerald-600 mb-6" aria-hidden="true"></i>
                     <h3 class="text-3xl font-bold mb-4">Solo Regenerativo</h3>
-                    <p class="text-gray-600">Práticas que recuperam a saúde do solo e aumentam a produtividade.</p>
+                    <p class="text-gray-600 mb-4">
+                        Práticas como plantio direto, rotação de culturas e Integração Lavoura-Pecuária-Floresta (ILPF) recuperam a vida do solo.
+                    </p>
+                    <p class="text-gray-600">
+                        O sistema ILPF já ocupa mais de <strong>17 milhões de hectares</strong> no Brasil e ajuda a sequester carbono enquanto aumenta a renda do produtor.
+                    </p>
                 </div>
+
+                <!-- Card 3 -->
                 <div class="card-hover bg-white p-10 rounded-3xl border border-emerald-100">
-                    <i class="fa-solid fa-droplet text-5xl text-emerald-600 mb-6"></i>
+                    <i class="fa-solid fa-droplet text-5xl text-emerald-600 mb-6" aria-hidden="true"></i>
                     <h3 class="text-3xl font-bold mb-4">Gestão Hídrica</h3>
-                    <p class="text-gray-600">Irrigação inteligente para economizar o recurso mais precioso.</p>
+                    <p class="text-gray-600 mb-4">
+                        Irrigação inteligente com sensores de umidade e sistemas de gotejamento evitam o desperdício de água.
+                    </p>
+                    <p class="text-gray-600">
+                        A irrigação de precisão pode economizar entre <strong>30% e 50%</strong> de água em comparação aos métodos tradicionais.
+                    </p>
                 </div>
             </div>
         </div>
@@ -79,52 +132,113 @@
     <!-- Galeria -->
     <section id="galeria" class="py-28 bg-emerald-50">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-5xl font-bold text-center mb-20 text-emerald-900">Tecnologia em Harmonia com a Natureza</h2>
-            <div class="grid md:grid-cols-2 gap-12">
+            <h2 class="text-5xl font-bold text-center mb-6 text-emerald-900">Tecnologia em Harmonia com a Natureza</h2>
+            <p class="text-center text-gray-600 text-xl max-w-3xl mx-auto mb-16">
+                Imagens reais do campo brasileiro mostrando a união entre inovação e sustentabilidade.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-8">
                 <div class="rounded-3xl overflow-hidden shadow-2xl">
-                    <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad2d6" alt="Agricultura de precisão">
+                    <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad2d6?w=800" alt="Drone sobrevoando plantação em agricultura de precisão">
                 </div>
                 <div class="rounded-3xl overflow-hidden shadow-2xl">
-                    <img src="https://images.unsplash.com/photo-1500595046743-3a1e6a9c0d3d" alt="Campo sustentável">
+                    <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef1426?w=800" alt="Trator moderno trabalhando em campo sustentável">
                 </div>
+                <div class="rounded-3xl overflow-hidden shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800" alt="Plantação verde com solo saudável e regenerativo">
+                </div>
+                <div class="rounded-3xl overflow-hidden shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=800" alt="Sistema de irrigação em lavoura brasileira">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vídeo -->
+    <section id="video" class="py-28 bg-white">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h2 class="text-5xl font-bold mb-6 text-emerald-900">Veja a Sustentabilidade em Ação</h2>
+            <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
+                Assista a um exemplo real de como a tecnologia e as práticas regenerativas estão transformando o agro brasileiro.
+            </p>
+
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl aspect-video">
+                <iframe 
+                    class="w-full h-full"
+                    src="https://www.youtube.com/embed/8jPQjjsBbIc" 
+                    title="Agricultura Sustentável no Brasil"
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen
+                    loading="lazy">
+                </iframe>
             </div>
         </div>
     </section>
 
     <!-- Impacto + Quiz -->
-    <section id="impacto" class="py-28 bg-white">
+    <section id="impacto" class="py-28 bg-emerald-50">
         <div class="max-w-6xl mx-auto px-6">
             <h2 class="text-5xl font-bold text-center mb-20 text-emerald-900">Faça a Diferença</h2>
+            
             <div class="grid md:grid-cols-2 gap-12">
+                <!-- Calculadora -->
                 <div class="bg-emerald-900 text-white p-12 rounded-3xl">
                     <h3 class="text-3xl font-bold mb-8">Calculadora de Impacto</h3>
-                    <input type="number" id="hectares" value="150" class="mb-8">
-                    <button onclick="calcularImpacto()" class="w-full py-6 bg-emerald-500 hover:bg-emerald-400 text-xl font-semibold rounded-2xl">
+                    <label for="hectares" class="sr-only">Quantidade de hectares</label>
+                    <input type="number" id="hectares" value="150" min="1" aria-label="Digite a quantidade de hectares">
+                    <button onclick="calcularImpacto()" class="w-full py-6 bg-emerald-500 hover:bg-emerald-400 text-xl font-semibold rounded-2xl mt-6">
                         Calcular Meu Impacto
                     </button>
-                    <div id="resultado" class="mt-12 min-h-[160px]"></div>
+                    <div id="resultado" class="mt-12 min-h-[160px]" aria-live="polite"></div>
                 </div>
 
+                <!-- Quiz -->
                 <div class="bg-emerald-900 text-white p-12 rounded-3xl">
                     <h3 class="text-3xl font-bold mb-8">Teste seu Conhecimento</h3>
-                    <div id="quiz" class="min-h-[340px]"></div>
+                    <div id="quiz" class="min-h-[340px]" aria-live="polite"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Final -->
-    <section id="participar" class="py-32 bg-gradient-to-br from-emerald-900 to-teal-900 text-white text-center">
-        <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-6xl font-bold mb-8">O futuro do agro começa com você</h2>
-            <p class="text-2xl mb-12 text-emerald-100">Inscreva-se agora no Agrinho 2026</p>
-            <button onclick="alert('Inscrição realizada com sucesso! 🌱')" 
-                    class="bg-white text-emerald-900 px-16 py-7 rounded-3xl text-2xl font-bold hover:bg-emerald-100 transition-all">
-                Inscrever-se Agora
-            </button>
+    <!-- Formulário de Inscrição -->
+    <section id="participar" class="py-32 bg-gradient-to-br from-emerald-900 to-teal-900 text-white">
+        <div class="max-w-2xl mx-auto px-6 text-center">
+            <h2 class="text-5xl md:text-6xl font-bold mb-6">O futuro do agro começa com você</h2>
+            <p class="text-xl mb-12 text-emerald-100">Preencha o formulário e garanta sua inscrição no Agrinho 2026</p>
+
+            <form id="form-inscricao" class="bg-white/10 backdrop-blur-sm p-10 rounded-3xl text-left space-y-6">
+                <div>
+                    <label for="nome" class="block mb-2 font-medium">Nome completo</label>
+                    <input type="text" id="nome" name="nome" required
+                           class="w-full px-5 py-4 rounded-2xl bg-white/10 border border-white/30 text-white placeholder-white/50 focus:outline-none focus:border-emerald-400"
+                           placeholder="Seu nome">
+                </div>
+
+                <div>
+                    <label for="email" class="block mb-2 font-medium">E-mail</label>
+                    <input type="email" id="email" name="email" required
+                           class="w-full px-5 py-4 rounded-2xl bg-white/10 border border-white/30 text-white placeholder-white/50 focus:outline-none focus:border-emerald-400"
+                           placeholder="seu@email.com">
+                </div>
+
+                <div>
+                    <label for="cidade" class="block mb-2 font-medium">Cidade / Estado</label>
+                    <input type="text" id="cidade" name="cidade"
+                           class="w-full px-5 py-4 rounded-2xl bg-white/10 border border-white/30 text-white placeholder-white/50 focus:outline-none focus:border-emerald-400"
+                           placeholder="Ex: Londrina - PR">
+                </div>
+
+                <button type="submit"
+                        class="w-full bg-white text-emerald-900 py-5 rounded-2xl text-xl font-bold hover:bg-emerald-100 transition-all mt-4">
+                    Confirmar Inscrição
+                </button>
+            </form>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="bg-emerald-950 text-emerald-300 py-16 text-center">
         <p class="text-2xl font-bold mb-3">AGRINHO 2026</p>
         <p>Construindo um agro mais forte e sustentável</p>
