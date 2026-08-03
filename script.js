@@ -278,11 +278,11 @@ document.addEventListener('DOMContentLoaded', function () {
     // ======================================
     const questions = [
         {
-            q: "Qual percentual do PIB brasileiro vem do agronegócio?",
-            options: ["15%", "24,5%", "35%", "10%"],
-            a: "24,5%",
-            ex: "Segundo o Cepea/USP, o agro responde por cerca de 24,5% do PIB brasileiro."
-        },
+    q: "Qual percentual do PIB brasileiro vem do agronegócio?",
+    options: ["15%", "25%", "35%", "10%"],
+    a: "25%",
+    ex: "Segundo o Cepea/USP, o agro responde por 25,13% do PIB: 16,1% do setor agrícola (R$ 2,06 trilhões) e 8,9% da pecuária (R$ 1,14 trilhão)."
+},
         {
             q: "O que significa ILPF?",
             options: [
