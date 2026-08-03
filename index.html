@@ -3,247 +3,918 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Agrinho 2026 - O futuro da agricultura sustentável brasileira.">
+    <meta name="description" content="Agrinho 2026 - Agro Forte, Futuro Verde: tecnologia, práticas regenerativas e preservação ambiental no agronegócio brasileiro. Dados, casos reais, calculadora de impacto e quiz educativo.">
+    <meta property="og:title" content="Agrinho 2026 | Agro Forte • Futuro Verde">
+    <meta property="og:description" content="Produzir e preservar caminham juntos. Explore dados, casos reais e ferramentas interativas sobre o agro sustentável brasileiro.">
+    <meta property="og:type" content="website">
     <title>Agrinho 2026 | Agro Forte • Futuro Verde</title>
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&family=Abril+Fatface&family=Gravitas+One&family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: '#0B3D2E',
+                        leaf: '#2D6A4F',
+                        fresh: '#74C69D',
+                        earth: '#7F5539',
+                        harvest: '#F4B942',
+                        paper: '#F8F7F2',
+                        ink: '#14231C'
+                    },
+                    fontFamily: {
+                        display: ['Fraunces', 'serif'],
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* ============ BASE ============ */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', system-ui, sans-serif; line-height: 1.6; color: #14231C; background: #F8F7F2; overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: 'Fraunces', serif; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
+        section { scroll-margin-top: 96px; }
+        ::selection { background: #74C69D; color: #0B3D2E; }
+        ::-webkit-scrollbar { width: 12px; }
+        ::-webkit-scrollbar-track { background: #F8F7F2; }
+        ::-webkit-scrollbar-thumb { background: #2D6A4F; border-radius: 6px; border: 3px solid #F8F7F2; }
+
+        /* ============ HEADER ============ */
+        #header { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); background: transparent; }
+        #header.scrolled { background: rgba(11, 61, 46, 0.97) !important; backdrop-filter: blur(12px); box-shadow: 0 4px 30px rgba(0,0,0,0.15); }
+
+        .nav-link { position: relative; transition: color 0.3s; }
+        .nav-link:after { content: ''; position: absolute; width: 0; height: 3px; bottom: -8px; left: 50%; transform: translateX(-50%); background: linear-gradient(to right, #74C69D, #2D6A4F); border-radius: 2px; transition: width 0.4s ease; }
+        .nav-link:hover:after, .nav-link.active:after { width: 100%; }
+
+        .nav-link-mobile { color: white; padding: 0.75rem 0; display: block; transition: all 0.3s; }
+        .nav-link-mobile:hover { color: #74C69D; transform: translateX(8px); }
+
+        /* ============ HERO ============ */
+        .hero-bg {
+            background-image: linear-gradient(135deg, rgba(11,61,46,0.88) 0%, rgba(45,106,79,0.72) 50%, rgba(11,61,46,0.88) 100%), url('https://images.unsplash.com/photo-1625246333195-78d9c38ad2d6?w=2000&q=80');
+            background-size: cover; background-position: center;
+        }
+        @media (min-width: 769px) and (prefers-reduced-motion: no-preference) {
+            .hero-bg { background-attachment: fixed; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .stat-item { opacity: 0; transform: translateY(20px); animation: fadeInUp 0.6s ease forwards; }
+        .stat-item:nth-child(1) { animation-delay: 0.1s; }
+        .stat-item:nth-child(2) { animation-delay: 0.2s; }
+        .stat-item:nth-child(3) { animation-delay: 0.3s; }
+        .stat-item:nth-child(4) { animation-delay: 0.4s; }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        .chart-bar { width: 0; transition: width 1.4s cubic-bezier(0.4, 0, 0.2, 1); }
+
+        /* ============ CARDS & IMAGES ============ */
+        .lift { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .lift:hover { transform: translateY(-8px); box-shadow: 0 20px 40px -12px rgba(45,106,79,0.25); }
+        figure img { transition: transform 0.6s ease; }
+        figure:hover img { transform: scale(1.05); }
+
+        /* ============ FORMS ============ */
+        input[type="number"] { font-family: 'Fraunces', serif; font-weight: 600; }
+        input[type="number"]:focus, select:focus { outline: none; border-color: #2D6A4F !important; box-shadow: 0 0 0 4px rgba(45,106,79,0.15); }
+        #form-inscricao input:focus { outline: none; border-color: #74C69D !important; box-shadow: 0 0 0 4px rgba(116,198,157,0.25); }
+
+        button { transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
+        button:hover:not(:disabled) { transform: translateY(-2px); }
+        button:active:not(:disabled) { transform: translateY(0); }
+
+        .quiz-option:hover:not(:disabled) { transform: translateX(8px); }
+        .quiz-option:disabled { cursor: not-allowed; }
+
+        #back-to-top:hover { transform: scale(1.1); box-shadow: 0 8px 24px rgba(244,185,66,0.4); }
+
+        @keyframes slideInRight { from { transform: translateX(400px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        .toast-notification { animation: slideInRight 0.4s ease; }
+
+        /* ============ ACESSIBILIDADE ============ */
+        a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid #74C69D; outline-offset: 3px; border-radius: 0.5rem; }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+            html { scroll-behavior: auto; }
+            .stat-item, .reveal { opacity: 1; transform: none; animation: none; }
+        }
+
+        @media (max-width: 768px) {
+            .lift:hover { transform: translateY(-4px); }
+        }
+
+        @media print {
+            #header, #back-to-top, button, iframe { display: none !important; }
+        }
+    </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-paper text-ink font-sans antialiased">
 
-    <!-- Navbar -->
-    <nav class="bg-emerald-950 text-white fixed w-full z-50 border-b border-emerald-900" role="navigation" aria-label="Menu principal">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-harvest focus:text-ink focus:px-4 focus:py-2 focus:rounded-2xl">Pular para o conteúdo principal</a>
+
+    <!-- Barra de progresso de leitura -->
+    <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-harvest z-[60]" style="width:0%" aria-hidden="true"></div>
+
+    <!-- ============ HEADER ============ -->
+    <header id="header" class="fixed w-full z-50 text-white" role="banner">
         <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-            
-            <!-- Logo -->
-            <div class="flex items-center gap-4">
-                <div class="w-12 h-12 bg-emerald-500 rounded-2xl flex items-center justify-center text-3xl" aria-hidden="true">🌱</div>
+            <a href="#inicio" class="flex items-center gap-4 group" aria-label="Agrinho 2026 - Voltar ao início">
+                <div class="w-12 h-12 bg-leaf rounded-2xl flex items-center justify-center text-3xl group-hover:scale-110 transition-transform" aria-hidden="true">🌱</div>
                 <div>
-                    <h1 class="text-3xl font-bold tracking-tight">AGRINHO</h1>
-                    <p class="text-xs text-emerald-400 -mt-1">2026</p>
+                    <span class="text-2xl font-display font-bold tracking-tight block leading-none">AGRINHO</span>
+                    <span class="text-xs text-fresh">2026</span>
                 </div>
-            </div>
-
-            <!-- Links Desktop -->
-            <div class="hidden md:flex gap-10 text-lg font-medium">
-                <a href="#inicio" class="nav-link">Início</a>
-                <a href="#sustentabilidade" class="nav-link">Sustentabilidade</a>
-                <a href="#galeria" class="nav-link">Galeria</a>
-                <a href="#video" class="nav-link">Vídeo</a>
-                <a href="#impacto" class="nav-link">Impacto</a>
-            </div>
-
-            <!-- Botão Participar (Desktop) -->
-            <a href="#participar" class="hidden md:inline-block bg-emerald-500 hover:bg-emerald-400 px-8 py-3.5 rounded-2xl font-semibold transition-all">
-                Participar do Evento
             </a>
 
-            <!-- Botão Hamburger (Mobile) -->
-            <button id="menu-btn" class="md:hidden text-white text-3xl focus:outline-none" aria-label="Abrir menu" aria-expanded="false">
+            <nav class="hidden lg:flex gap-8 text-base font-medium" aria-label="Menu principal">
+                <a href="#inicio" class="nav-link">Início</a>
+                <a href="#producao" class="nav-link">Produção</a>
+                <a href="#sustentabilidade" class="nav-link">Sustentabilidade</a>
+                <a href="#desafios" class="nav-link">Desafios</a>
+                <a href="#solucoes" class="nav-link">Soluções</a>
+                <a href="#acao" class="nav-link">Ação</a>
+            </nav>
+
+            <a href="#calculadora" class="hidden lg:inline-flex items-center gap-2 bg-harvest hover:bg-harvest/90 text-ink px-6 py-3 rounded-2xl font-semibold transition-all hover:scale-105">
+                <i class="fa-solid fa-calculator" aria-hidden="true"></i> Calculadora
+            </a>
+
+            <button id="menu-btn" class="lg:hidden text-white text-3xl p-2 rounded-lg" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
 
-        <!-- Menu Mobile -->
-        <div id="mobile-menu" class="hidden md:hidden bg-emerald-950 border-t border-emerald-900">
-            <div class="flex flex-col px-6 py-6 gap-5 text-lg font-medium">
+        <div id="mobile-menu" class="hidden lg:hidden bg-forest border-t border-leaf">
+            <nav class="flex flex-col px-6 py-6 gap-4 text-lg font-medium" aria-label="Menu mobile">
                 <a href="#inicio" class="nav-link-mobile">Início</a>
+                <a href="#producao" class="nav-link-mobile">Produção</a>
                 <a href="#sustentabilidade" class="nav-link-mobile">Sustentabilidade</a>
-                <a href="#galeria" class="nav-link-mobile">Galeria</a>
-                <a href="#video" class="nav-link-mobile">Vídeo</a>
-                <a href="#impacto" class="nav-link-mobile">Impacto</a>
-                <a href="#participar" class="bg-emerald-500 hover:bg-emerald-400 text-center px-6 py-3 rounded-2xl font-semibold transition-all mt-2">
-                    Participar do Evento
-                </a>
+                <a href="#desafios" class="nav-link-mobile">Desafios</a>
+                <a href="#solucoes" class="nav-link-mobile">Soluções</a>
+                <a href="#acao" class="nav-link-mobile">Ação</a>
+                <a href="#calculadora" class="bg-harvest text-ink text-center px-6 py-3 rounded-2xl font-semibold mt-2">Calculadora de Impacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+        <!-- ============ HERO ============ -->
+        <section id="inicio" class="hero-bg min-h-screen flex items-center text-white relative pt-24 pb-44">
+            <div class="max-w-7xl mx-auto px-6 z-10">
+                <div class="max-w-4xl">
+                    <p class="uppercase tracking-widest text-fresh mb-4 text-sm font-semibold">Agrinho 2026 • Educação para o campo</p>
+                    <h1 class="text-5xl md:text-7xl font-display font-bold leading-tight mb-8">
+                        Agro Forte.<br><span class="text-fresh">Futuro Verde.</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl max-w-2xl mb-12 text-white/90">
+                        Como o Brasil pode crescer economicamente sem comprometer os recursos naturais das futuras gerações? A resposta está na tecnologia e nas práticas regenerativas.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#producao" class="inline-flex items-center gap-2 bg-white text-forest px-8 py-4 rounded-2xl text-lg font-semibold hover:scale-105 transition-all shadow-xl">
+                            Explorar <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+                        <a href="#calculadora" class="inline-flex items-center gap-2 bg-harvest text-ink px-8 py-4 rounded-2xl text-lg font-semibold hover:scale-105 transition-all shadow-xl">
+                            <i class="fa-solid fa-calculator" aria-hidden="true"></i> Calcular meu impacto
+                        </a>
+                    </div>
+                </div>
             </div>
-        </div>
-    </nav>
 
-    <!-- Hero -->
-    <section id="inicio" class="hero-bg h-screen flex items-center text-white relative">
-        <div class="max-w-6xl mx-auto px-6 text-center z-10">
-            <h1 class="text-6xl md:text-7xl font-black leading-none mb-8">
-                AGRO FORTE.<br>
-                <span class="text-emerald-300">FUTURO VERDE.</span>
-            </h1>
-            <p class="text-2xl md:text-3xl max-w-3xl mx-auto mb-12 text-white/90">
-                Promovendo o equilíbrio entre alta produtividade e preservação ambiental
-            </p>
-            <a href="#participar" class="inline-block bg-white text-emerald-900 px-12 py-6 rounded-3xl text-xl font-semibold hover:scale-105 transition-all shadow-xl">
-                Quero Participar
-            </a>
-        </div>
-    </section>
+            <div class="absolute bottom-0 left-0 right-0 bg-forest/95 backdrop-blur-sm border-t border-leaf/30">
+                <div class="max-w-7xl mx-auto px-6 py-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div class="stat-item">
+                        <p class="text-4xl md:text-5xl font-display font-bold text-harvest" data-target="24.5" data-suffix="%">0%</p>
+                        <p class="text-sm md:text-base text-white/80 mt-2">do PIB brasileiro</p>
+                    </div>
+                    <div class="stat-item">
+                        <p class="text-4xl md:text-5xl font-display font-bold text-fresh" data-target="20" data-suffix="M">0M</p>
+                        <p class="text-sm md:text-base text-white/80 mt-2">empregos gerados</p>
+                    </div>
+                    <div class="stat-item">
+                        <p class="text-4xl md:text-5xl font-display font-bold text-harvest" data-target="50" data-suffix="%">0%</p>
+                        <p class="text-sm md:text-base text-white/80 mt-2">de economia de água</p>
+                    </div>
+                    <div class="stat-item">
+                        <p class="text-4xl md:text-5xl font-display font-bold text-fresh" data-target="17" data-suffix="M ha">0M ha</p>
+                        <p class="text-sm md:text-base text-white/80 mt-2">em sistemas ILPF</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- Sustentabilidade -->
-    <section id="sustentabilidade" class="py-28 bg-white">
+        <!-- ============ PRODUÇÃO ============ -->
+        <section id="producao" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <p class="uppercase tracking-widest text-earth mb-3 text-sm font-semibold">Economia</p>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold mb-6 text-forest">Produção que alimenta o mundo</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                        O agronegócio é o motor da economia brasileira: responde por cerca de <strong>24,5% do PIB</strong> (Cepea/USP) e gera aproximadamente <strong>20 milhões de empregos</strong>, colocando o Brasil entre os maiores exportadores de alimentos do planeta.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 items-start">
+                    <div class="bg-paper p-8 rounded-3xl border border-earth/20 reveal">
+                        <h3 class="text-2xl font-display font-bold mb-6 text-forest">Liderança mundial em exportações</h3>
+                        <div class="space-y-5">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-leaf/10 rounded-xl flex items-center justify-center shrink-0"><i class="fa-solid fa-seedling text-leaf text-xl" aria-hidden="true"></i></div>
+                                <div><p class="font-semibold">Soja</p><p class="text-sm text-gray-600">Maior produtor e exportador mundial</p></div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-leaf/10 rounded-xl flex items-center justify-center shrink-0"><i class="fa-solid fa-cow text-leaf text-xl" aria-hidden="true"></i></div>
+                                <div><p class="font-semibold">Carne bovina e de frango</p><p class="text-sm text-gray-600">Maior exportador global de proteína animal</p></div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-leaf/10 rounded-xl flex items-center justify-center shrink-0"><i class="fa-solid fa-mug-hot text-leaf text-xl" aria-hidden="true"></i></div>
+                                <div><p class="font-semibold">Café</p><p class="text-sm text-gray-600">Referência mundial em qualidade e volume</p></div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-leaf/10 rounded-xl flex items-center justify-center shrink-0"><i class="fa-solid fa-wheat-awn text-leaf text-xl" aria-hidden="true"></i></div>
+                                <div><p class="font-semibold">Milho e açúcar</p><p class="text-sm text-gray-600">Base da segurança alimentar e energética</p></div>
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-6 italic">Fontes: Cepea/USP, Embrapa, IBGE e MapBiomas.</p>
+                    </div>
+
+                    <div class="space-y-6 reveal">
+                        <div class="bg-white p-8 rounded-3xl shadow-lg border border-leaf/10">
+                            <p class="text-sm uppercase tracking-wider text-earth mb-2 font-semibold">PIB do agro</p>
+                            <p class="text-5xl font-display font-bold text-forest mb-2">24,5%</p>
+                            <p class="text-gray-600">da economia brasileira, segundo o Cepea/USP</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-3xl shadow-lg border border-leaf/10">
+                            <p class="text-sm uppercase tracking-wider text-earth mb-2 font-semibold">Preservação no campo</p>
+                            <p class="text-5xl font-display font-bold text-forest mb-2">+25%</p>
+                            <p class="text-gray-600">da vegetação nativa do país é conservada dentro de propriedades rurais (Embrapa Territorial), graças ao Código Florestal</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ SUSTENTABILIDADE ============ -->
+        <section id="sustentabilidade" class="py-24 bg-paper">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <p class="uppercase tracking-widest text-leaf mb-3 text-sm font-semibold">Tecnologia e prática</p>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold mb-6 text-forest">Pilares da Sustentabilidade</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                        <strong>Intensificação sustentável</strong>: produzir mais na mesma área, sem avançar sobre vegetação nativa.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 mb-16">
+                    <div class="lift bg-white p-8 rounded-3xl border border-leaf/10 reveal">
+                        <div class="w-16 h-16 bg-leaf/10 rounded-2xl flex items-center justify-center mb-6"><i class="fa-solid fa-microchip text-3xl text-leaf" aria-hidden="true"></i></div>
+                        <h3 class="text-2xl font-display font-bold mb-4 text-forest">Agricultura de Precisão</h3>
+                        <p class="text-gray-600 mb-4">Sensores, GPS, drones e inteligência artificial aplicam insumos apenas onde é necessário, reduzindo custos e impacto ambiental.</p>
+                        <p class="text-sm text-gray-600 border-t border-gray-100 pt-4"><i class="fa-solid fa-chart-line text-leaf mr-2" aria-hidden="true"></i><strong class="text-forest">30% menos</strong> insumos e <strong class="text-forest">20% mais</strong> produtividade (Embrapa)</p>
+                    </div>
+                    <div class="lift bg-white p-8 rounded-3xl border border-leaf/10 reveal">
+                        <div class="w-16 h-16 bg-leaf/10 rounded-2xl flex items-center justify-center mb-6"><i class="fa-solid fa-seedling text-3xl text-leaf" aria-hidden="true"></i></div>
+                        <h3 class="text-2xl font-display font-bold mb-4 text-forest">Solo Regenerativo</h3>
+                        <p class="text-gray-600 mb-4">Plantio direto, rotação de culturas e ILPF recuperam a vida do solo e sequestram carbono da atmosfera.</p>
+                        <p class="text-sm text-gray-600 border-t border-gray-100 pt-4"><i class="fa-solid fa-tree text-leaf mr-2" aria-hidden="true"></i><strong class="text-forest">17 milhões de hectares</strong> em ILPF no Brasil (Rede ILPF)</p>
+                    </div>
+                    <div class="lift bg-white p-8 rounded-3xl border border-leaf/10 reveal">
+                        <div class="w-16 h-16 bg-leaf/10 rounded-2xl flex items-center justify-center mb-6"><i class="fa-solid fa-droplet text-3xl text-leaf" aria-hidden="true"></i></div>
+                        <h3 class="text-2xl font-display font-bold mb-4 text-forest">Gestão Hídrica</h3>
+                        <p class="text-gray-600 mb-4">A irrigação é o maior uso de água do país (ANA). Sensores de umidade e gotejamento eliminam o desperdício.</p>
+                        <p class="text-sm text-gray-600 border-t border-gray-100 pt-4"><i class="fa-solid fa-tint text-leaf mr-2" aria-hidden="true"></i>Economia de <strong class="text-forest">30% a 50%</strong> de água</p>
+                    </div>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <!-- Conceitos-chave -->
+                    <div class="reveal">
+                        <h3 class="text-2xl font-display font-bold mb-6 text-forest">Conceitos-chave</h3>
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div class="bg-white p-6 rounded-2xl border border-leaf/10">
+                                <p class="font-semibold text-forest mb-2"><i class="fa-solid fa-expand text-leaf mr-2" aria-hidden="true"></i>Intensificação sustentável</p>
+                                <p class="text-sm text-gray-600">Aumentar a produtividade na área já aberta, sem desmatar novos territórios.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-2xl border border-leaf/10">
+                                <p class="font-semibold text-forest mb-2"><i class="fa-solid fa-cloud text-leaf mr-2" aria-hidden="true"></i>Sequestro de carbono</p>
+                                <p class="text-sm text-gray-600">Solo saudável e árvores capturam CO₂ da atmosfera e o armazenam.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-2xl border border-leaf/10">
+                                <p class="font-semibold text-forest mb-2"><i class="fa-solid fa-qrcode text-leaf mr-2" aria-hidden="true"></i>Rastreabilidade</p>
+                                <p class="text-sm text-gray-600">Seguir a origem da produção garante que ela nasceu de práticas legais e sustentáveis.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-2xl border border-leaf/10">
+                                <p class="font-semibold text-forest mb-2"><i class="fa-solid fa-hand-holding-dollar text-leaf mr-2" aria-hidden="true"></i>PSA</p>
+                                <p class="text-sm text-gray-600">Pagamento por Serviços Ambientais remunera quem conserva nascentes e matas.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gráfico de adoção -->
+                    <div class="bg-white p-8 rounded-3xl border border-leaf/10 reveal">
+                        <h3 class="text-2xl font-display font-bold mb-6 text-forest">Adoção de práticas no Brasil</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between mb-2 text-sm"><span class="font-medium">Plantio direto</span><span class="font-bold text-forest">+33 milhões ha</span></div>
+                                <div class="h-4 bg-leaf/10 rounded-full overflow-hidden"><div class="chart-bar h-full bg-gradient-to-r from-leaf to-fresh rounded-full" data-width="100%"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2 text-sm"><span class="font-medium">Sistemas ILPF</span><span class="font-bold text-forest">17 milhões ha</span></div>
+                                <div class="h-4 bg-leaf/10 rounded-full overflow-hidden"><div class="chart-bar h-full bg-gradient-to-r from-leaf to-fresh rounded-full" data-width="52%"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2 text-sm"><span class="font-medium">Áreas irrigadas com tecnologia</span><span class="font-bold text-forest">~8 milhões ha</span></div>
+                                <div class="h-4 bg-leaf/10 rounded-full overflow-hidden"><div class="chart-bar h-full bg-gradient-to-r from-leaf to-fresh rounded-full" data-width="24%"></div></div>
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-6 italic">Fontes: Febrapdp, Rede ILPF e ANA (valores aproximados).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ GALERIA: A VIDA NO CAMPO ============ -->
+        <section id="galeria" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <p class="uppercase tracking-widest text-earth mb-3 text-sm font-semibold">A vida no campo</p>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold mb-6 text-forest">Tecnologia e tradição lado a lado</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Imagens reais do dia a dia rural brasileiro: da agricultura familiar à energia renovável.</p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <figure class="rounded-3xl overflow-hidden shadow-lg reveal">
+                        <div class="overflow-hidden aspect-[4/3]"><img src="https://images.unsplash.com/photo-1500937386664-56d1dfef1426?w=800" alt="Mãos de agricultor colhendo trigo dourado" loading="lazy" decoding="async"></div>
+                        <figcaption class="p-4 bg-paper text-sm text-gray-700"><strong class="text-forest">Agricultura familiar:</strong> a colheita que sustenta comunidades inteiras.</figcaption>
+                    </figure>
+                    <figure class="rounded-3xl overflow-hidden shadow-lg reveal">
+                        <div class="overflow-hidden aspect-[4/3]"><img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad2d6?w=800" alt="Vista aérea de lavoura verde com sede de fazenda" loading="lazy" decoding="async"></div>
+                        <figcaption class="p-4 bg-paper text-sm text-gray-700"><strong class="text-forest">Tecnologia no campo:</strong> monitoramento aéreo das lavouras.</figcaption>
+                    </figure>
+                    <figure class="rounded-3xl overflow-hidden shadow-lg reveal">
+                        <div class="overflow-hidden aspect-[4/3]"><img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800" alt="Fileiras de plantas jovens em solo saudável" loading="lazy" decoding="async"></div>
+                        <figcaption class="p-4 bg-paper text-sm text-gray-700"><strong class="text-forest">Solo regenerativo:</strong> plantio direto protegendo a terra.</figcaption>
+                    </figure>
+                    <figure class="rounded-3xl overflow-hidden shadow-lg reveal">
+                        <div class="overflow-hidden aspect-[4/3]"><img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=800" alt="Sistema de irrigação por aspersão em lavoura" loading="lazy" decoding="async"></div>
+                        <figcaption class="p-4 bg-paper text-sm text-gray-700"><strong class="text-forest">Gestão hídrica:</strong> irrigação inteligente, gota a gota.</figcaption>
+                    </figure>
+                    <figure class="rounded-3xl overflow-hidden shadow-lg reveal">
+                        <div class="overflow-hidden aspect-[4/3]"><img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800" alt="Painéis solares em propriedade rural ao pôr do sol" loading="lazy" decoding="async"></div>
+                        <figcaption class="p-4 bg-paper text-sm text-gray-700"><strong class="text-forest">Energia renovável:</strong> fazendas movidas a sol e biomassa.</figcaption>
+                    </figure>
+                    <figure class="rounded-3xl overflow-hidden shadow-lg reveal">
+                        <div class="overflow-hidden aspect-[4/3]"><img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=800" alt="Vista aérea de lavouras em harmonia com a paisagem natural" loading="lazy" decoding="async"></div>
+                        <figcaption class="p-4 bg-paper text-sm text-gray-700"><strong class="text-forest">Paisagem produtiva:</strong> produção e preservação no mesmo território.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ DESAFIOS ============ -->
+        <section id="desafios" class="py-24 bg-paper">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <p class="uppercase tracking-widest text-earth mb-3 text-sm font-semibold">Desafios</p>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold mb-6 text-forest">O que precisa ser enfrentado</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Crescer sem esgotar: os três grandes desafios ambientais do setor.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="lift bg-white p-8 rounded-3xl border border-earth/20 reveal">
+                        <div class="w-16 h-16 bg-earth/10 rounded-2xl flex items-center justify-center mb-6"><i class="fa-solid fa-tree text-3xl text-earth" aria-hidden="true"></i></div>
+                        <h3 class="text-2xl font-display font-bold mb-4 text-forest">Desmatamento</h3>
+                        <p class="text-gray-600">A pressão por novas áreas ainda ameaça a Amazônia e o Cerrado. O Código Florestal exige preservar de 20% a 80% da propriedade conforme o bioma — e a intensificação sustentável torna o desmatamento desnecessário.</p>
+                    </div>
+                    <div class="lift bg-white p-8 rounded-3xl border border-earth/20 reveal">
+                        <div class="w-16 h-16 bg-earth/10 rounded-2xl flex items-center justify-center mb-6"><i class="fa-solid fa-water text-3xl text-earth" aria-hidden="true"></i></div>
+                        <h3 class="text-2xl font-display font-bold mb-4 text-forest">Consumo de água</h3>
+                        <p class="text-gray-600">A irrigação é o maior uso de água do país (ANA). Sem gestão, rios e aquíferos sofrem. Com sensores e gotejamento, é possível economizar até metade do volume captado.</p>
+                    </div>
+                    <div class="lift bg-white p-8 rounded-3xl border border-earth/20 reveal">
+                        <div class="w-16 h-16 bg-earth/10 rounded-2xl flex items-center justify-center mb-6"><i class="fa-solid fa-smog text-3xl text-earth" aria-hidden="true"></i></div>
+                        <h3 class="text-2xl font-display font-bold mb-4 text-forest">Gases de efeito estufa</h3>
+                        <p class="text-gray-600">A pecuária emite metano (CH₄) na digestão dos animais, e fertilizantes liberam óxido nitroso (N₂O). Dietas ajustadas e manejo correto do solo reduzem essas emissões.</p>
+                    </div>
+                </div>
+
+                <blockquote class="mt-20 bg-harvest/20 border-l-8 border-harvest rounded-3xl p-10 md:p-14 text-center reveal">
+                    <p class="text-2xl md:text-3xl font-display font-bold text-forest leading-snug">
+                        “Como o agronegócio pode crescer economicamente sem comprometer os recursos naturais das futuras gerações?”
+                    </p>
+                    <p class="mt-6 text-gray-700 font-medium">A resposta: tecnologia moderna, práticas regenerativas e gestão ambiental responsável.</p>
+                </blockquote>
+            </div>
+        </section>
+
+        <!-- ============ SOLUÇÕES E CASOS REAIS ============ -->
+        <section id="solucoes" class="py-24 bg-forest text-white">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <p class="uppercase tracking-widest text-fresh mb-3 text-sm font-semibold">Inovação</p>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">Soluções que já funcionam</h2>
+                    <p class="text-lg text-white/80 max-w-3xl mx-auto">O Plano ABC+ (Agricultura de Baixo Carbono) prevê mitigar mais de 1 bilhão de toneladas de CO₂e até 2030. Conheça caminhos e casos reais:</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 mb-16">
+                    <div class="bg-leaf/20 backdrop-blur-sm p-8 rounded-3xl border border-fresh/30 lift reveal">
+                        <div class="text-4xl mb-4" aria-hidden="true">🌾</div>
+                        <h3 class="text-xl font-display font-bold mb-3">Fazenda da Toca (SP)</h3>
+                        <p class="text-sm text-white/90">Uma das maiores fazendas orgânicas regenerativas da América Latina: solo vivo, biodiversidade e produção em larga escala sem químicos sintéticos.</p>
+                    </div>
+                    <div class="bg-leaf/20 backdrop-blur-sm p-8 rounded-3xl border border-fresh/30 lift reveal">
+                        <div class="text-4xl mb-4" aria-hidden="true">🐄</div>
+                        <h3 class="text-xl font-display font-bold mb-3">Rede ILPF (MT e nacional)</h3>
+                        <p class="text-sm text-white/90">Mais de 17 milhões de hectares integram lavoura, pecuária e floresta: mais renda por área, conforto animal e carbono sequestrado nas árvores.</p>
+                    </div>
+                    <div class="bg-leaf/20 backdrop-blur-sm p-8 rounded-3xl border border-fresh/30 lift reveal">
+                        <div class="text-4xl mb-4" aria-hidden="true">🌳</div>
+                        <h3 class="text-xl font-display font-bold mb-3">Rede de Sementes do Xingu (MT)</h3>
+                        <p class="text-sm text-white/90">Comunidades locais coletam sementes nativas e restauram milhares de hectares de áreas degradadas, gerando renda e floresta em pé.</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 reveal">
+                    <div class="bg-leaf/20 backdrop-blur-sm p-8 rounded-3xl border border-fresh/30">
+                        <h3 class="text-2xl font-display font-bold mb-4">Práticas regenerativas</h3>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-fresh mt-1" aria-hidden="true"></i>Plantio direto e cobertura vegetal permanente</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-fresh mt-1" aria-hidden="true"></i>Rotação e consórcio de culturas</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-fresh mt-1" aria-hidden="true"></i>Integração Lavoura-Pecuária-Floresta (ILPF)</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-fresh mt-1" aria-hidden="true"></i>Restauração de pastagens degradadas</li>
+                        </ul>
+                    </div>
+                    <div class="bg-leaf/20 backdrop-blur-sm p-8 rounded-3xl border border-fresh/30">
+                        <h3 class="text-2xl font-display font-bold mb-4">Tecnologias sustentáveis</h3>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-fresh mt-1" aria-hidden="true"></i>Drones e satélites para monitoramento da lavoura</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-fresh mt-1" aria-hidden="true"></i>Energia solar e biomassa nas propriedades</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-fresh mt-1" aria-hidden="true"></i>Rastreabilidade da produção da origem ao prato</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-fresh mt-1" aria-hidden="true"></i>Pagamento por Serviços Ambientais (PSA)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ AÇÃO: CALCULADORA + QUIZ + VÍDEO ============ -->
+        <section id="acao" class="py-24 bg-paper">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <p class="uppercase tracking-widest text-leaf mb-3 text-sm font-semibold">Participe</p>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold mb-6 text-forest">Faça a diferença</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Calcule seu impacto, teste seus conhecimentos e veja a sustentabilidade em ação.</p>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-8 mb-12">
+                    <!-- Calculadora -->
+                    <div id="calculadora" class="bg-white p-8 rounded-3xl shadow-lg border border-leaf/10 reveal">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-12 h-12 bg-harvest rounded-xl flex items-center justify-center"><i class="fa-solid fa-calculator text-forest text-xl" aria-hidden="true"></i></div>
+                            <h3 class="text-2xl font-display font-bold text-forest">Calculadora de Impacto</h3>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <label for="hectares" class="block text-sm font-medium text-gray-700 mb-2">Área em hectares</label>
+                                <input type="number" id="hectares" value="150" min="1" class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 text-center text-2xl">
+                            </div>
+                            <div>
+                                <label for="atividade" class="block text-sm font-medium text-gray-700 mb-2">Tipo de atividade</label>
+                                <select id="atividade" class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 bg-white">
+                                    <option value="soja">Soja</option>
+                                    <option value="milho">Milho</option>
+                                    <option value="cafe">Café</option>
+                                    <option value="pecuaria">Pecuária</option>
+                                    <option value="cana">Cana-de-açúcar</option>
+                                </select>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium text-gray-700 mb-3">Práticas sustentáveis adotadas</p>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="checkbox" id="pratica1" class="w-5 h-5 accent-leaf">Plantio direto</label>
+                                    <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="checkbox" id="pratica2" class="w-5 h-5 accent-leaf">Sistema ILPF</label>
+                                    <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="checkbox" id="pratica3" class="w-5 h-5 accent-leaf">Irrigação inteligente</label>
+                                    <label class="flex items-center gap-2 cursor-pointer text-sm"><input type="checkbox" id="pratica4" class="w-5 h-5 accent-leaf">Energia renovável</label>
+                                </div>
+                            </div>
+                            <button onclick="calcularImpacto()" class="w-full bg-leaf hover:bg-leaf/90 text-white py-4 rounded-xl font-semibold">Calcular Impacto</button>
+                            <div id="resultado" class="mt-4 min-h-[120px]" aria-live="polite"></div>
+                        </div>
+                    </div>
+
+                    <!-- Quiz -->
+                    <div class="bg-white p-8 rounded-3xl shadow-lg border border-leaf/10 reveal">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-12 h-12 bg-fresh rounded-xl flex items-center justify-center"><i class="fa-solid fa-graduation-cap text-forest text-xl" aria-hidden="true"></i></div>
+                            <h3 class="text-2xl font-display font-bold text-forest">Teste seu Conhecimento</h3>
+                        </div>
+                        <div id="quiz" class="min-h-[400px]" aria-live="polite"></div>
+                    </div>
+                </div>
+
+                <!-- Vídeo -->
+                <div class="bg-white p-8 rounded-3xl shadow-lg reveal">
+                    <h3 class="text-2xl font-display font-bold mb-2 text-forest text-center">Veja a sustentabilidade em ação</h3>
+                    <p class="text-gray-600 text-center mb-6">Tecnologia e práticas regenerativas transformando o agro brasileiro.</p>
+                    <div class="relative rounded-2xl overflow-hidden shadow-xl aspect-video">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/8jPQjjsBbIc" title="Agricultura Sustentável no Brasil" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ INSCRIÇÃO ============ -->
+        <section id="participar" class="py-24 bg-leaf text-white">
+            <div class="max-w-2xl mx-auto px-6">
+                <div class="text-center mb-12 reveal">
+                    <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">Participe do Agrinho 2026</h2>
+                    <p class="text-lg text-white/90">O futuro do agro começa com você. Garanta sua inscrição.</p>
+                </div>
+                <form id="form-inscricao" class="bg-white/10 backdrop-blur-sm p-8 rounded-3xl space-y-6 reveal">
+                    <div>
+                        <label for="nome" class="block mb-2 font-medium">Nome completo *</label>
+                        <input type="text" id="nome" name="nome" required class="w-full px-5 py-4 rounded-2xl bg-white/10 border-2 border-white/30 text-white placeholder-white/50" placeholder="Seu nome completo">
+                    </div>
+                    <div>
+                        <label for="email" class="block mb-2 font-medium">E-mail *</label>
+                        <input type="email" id="email" name="email" required class="w-full px-5 py-4 rounded-2xl bg-white/10 border-2 border-white/30 text-white placeholder-white/50" placeholder="seu@email.com">
+                    </div>
+                    <div>
+                        <label for="cidade" class="block mb-2 font-medium">Cidade / Estado</label>
+                        <input type="text" id="cidade" name="cidade" class="w-full px-5 py-4 rounded-2xl bg-white/10 border-2 border-white/30 text-white placeholder-white/50" placeholder="Ex: Londrina - PR">
+                    </div>
+                    <button type="submit" class="w-full bg-harvest hover:bg-harvest/90 text-ink py-5 rounded-2xl text-xl font-bold">Confirmar Inscrição</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="bg-forest text-white py-16">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-5xl font-bold text-center mb-6 text-emerald-900">Pilares da Sustentabilidade</h2>
-            <p class="text-center text-gray-600 text-xl max-w-3xl mx-auto mb-20">
-                Três caminhos concretos para unir produtividade e preservação no campo brasileiro.
-            </p>
-
-            <div class="grid md:grid-cols-3 gap-10">
-                <!-- Card 1 -->
-                <div class="card-hover bg-white p-10 rounded-3xl border border-emerald-100">
-                    <i class="fa-solid fa-microchip text-5xl text-emerald-600 mb-6" aria-hidden="true"></i>
-                    <h3 class="text-3xl font-bold mb-4">Agricultura de Precisão</h3>
-                    <p class="text-gray-600 mb-4">
-                        Uso de drones, sensores e inteligência artificial para aplicar defensivos e fertilizantes apenas onde é necessário.
-                    </p>
-                    <p class="text-gray-600">
-                        Estudos da Embrapa mostram que essa tecnologia pode reduzir o uso de insumos em até <strong>30%</strong> e aumentar a produtividade em até <strong>20%</strong>.
-                    </p>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="card-hover bg-white p-10 rounded-3xl border border-emerald-100">
-                    <i class="fa-solid fa-seedling text-5xl text-emerald-600 mb-6" aria-hidden="true"></i>
-                    <h3 class="text-3xl font-bold mb-4">Solo Regenerativo</h3>
-                    <p class="text-gray-600 mb-4">
-                        Práticas como plantio direto, rotação de culturas e Integração Lavoura-Pecuária-Floresta (ILPF) recuperam a vida do solo.
-                    </p>
-                    <p class="text-gray-600">
-                        O sistema ILPF já ocupa mais de <strong>17 milhões de hectares</strong> no Brasil e ajuda a sequester carbono enquanto aumenta a renda do produtor.
-                    </p>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="card-hover bg-white p-10 rounded-3xl border border-emerald-100">
-                    <i class="fa-solid fa-droplet text-5xl text-emerald-600 mb-6" aria-hidden="true"></i>
-                    <h3 class="text-3xl font-bold mb-4">Gestão Hídrica</h3>
-                    <p class="text-gray-600 mb-4">
-                        Irrigação inteligente com sensores de umidade e sistemas de gotejamento evitam o desperdício de água.
-                    </p>
-                    <p class="text-gray-600">
-                        A irrigação de precisão pode economizar entre <strong>30% e 50%</strong> de água em comparação aos métodos tradicionais.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Galeria -->
-    <section id="galeria" class="py-28 bg-emerald-50">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-5xl font-bold text-center mb-6 text-emerald-900">Tecnologia em Harmonia com a Natureza</h2>
-            <p class="text-center text-gray-600 text-xl max-w-3xl mx-auto mb-16">
-                Imagens reais do campo brasileiro mostrando a união entre inovação e sustentabilidade.
-            </p>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="rounded-3xl overflow-hidden shadow-2xl">
-                    <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad2d6?w=800" alt="Drone sobrevoando plantação em agricultura de precisão">
-                </div>
-                <div class="rounded-3xl overflow-hidden shadow-2xl">
-                    <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef1426?w=800" alt="Trator moderno trabalhando em campo sustentável">
-                </div>
-                <div class="rounded-3xl overflow-hidden shadow-2xl">
-                    <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800" alt="Plantação verde com solo saudável e regenerativo">
-                </div>
-                <div class="rounded-3xl overflow-hidden shadow-2xl">
-                    <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=800" alt="Sistema de irrigação em lavoura brasileira">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Vídeo -->
-    <section id="video" class="py-28 bg-white">
-        <div class="max-w-5xl mx-auto px-6 text-center">
-            <h2 class="text-5xl font-bold mb-6 text-emerald-900">Veja a Sustentabilidade em Ação</h2>
-            <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
-                Assista a um exemplo real de como a tecnologia e as práticas regenerativas estão transformando o agro brasileiro.
-            </p>
-
-            <div class="relative rounded-3xl overflow-hidden shadow-2xl aspect-video">
-                <iframe 
-                    class="w-full h-full"
-                    src="https://www.youtube.com/embed/8jPQjjsBbIc" 
-                    title="Agricultura Sustentável no Brasil"
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen
-                    loading="lazy">
-                </iframe>
-            </div>
-        </div>
-    </section>
-
-    <!-- Impacto + Quiz -->
-    <section id="impacto" class="py-28 bg-emerald-50">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-5xl font-bold text-center mb-20 text-emerald-900">Faça a Diferença</h2>
-            
-            <div class="grid md:grid-cols-2 gap-12">
-                <!-- Calculadora -->
-                <div class="bg-emerald-900 text-white p-12 rounded-3xl">
-                    <h3 class="text-3xl font-bold mb-8">Calculadora de Impacto</h3>
-                    <label for="hectares" class="sr-only">Quantidade de hectares</label>
-                    <input type="number" id="hectares" value="150" min="1" aria-label="Digite a quantidade de hectares">
-                    <button onclick="calcularImpacto()" class="w-full py-6 bg-emerald-500 hover:bg-emerald-400 text-xl font-semibold rounded-2xl mt-6">
-                        Calcular Meu Impacto
-                    </button>
-                    <div id="resultado" class="mt-12 min-h-[160px]" aria-live="polite"></div>
-                </div>
-
-                <!-- Quiz -->
-                <div class="bg-emerald-900 text-white p-12 rounded-3xl">
-                    <h3 class="text-3xl font-bold mb-8">Teste seu Conhecimento</h3>
-                    <div id="quiz" class="min-h-[340px]" aria-live="polite"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Formulário de Inscrição -->
-    <section id="participar" class="py-32 bg-gradient-to-br from-emerald-900 to-teal-900 text-white">
-        <div class="max-w-2xl mx-auto px-6 text-center">
-            <h2 class="text-5xl md:text-6xl font-bold mb-6">O futuro do agro começa com você</h2>
-            <p class="text-xl mb-12 text-emerald-100">Preencha o formulário e garanta sua inscrição no Agrinho 2026</p>
-
-            <form id="form-inscricao" class="bg-white/10 backdrop-blur-sm p-10 rounded-3xl text-left space-y-6">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
                 <div>
-                    <label for="nome" class="block mb-2 font-medium">Nome completo</label>
-                    <input type="text" id="nome" name="nome" required
-                           class="w-full px-5 py-4 rounded-2xl bg-white/10 border border-white/30 text-white placeholder-white/50 focus:outline-none focus:border-emerald-400"
-                           placeholder="Seu nome">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-leaf rounded-xl flex items-center justify-center text-2xl" aria-hidden="true">🌱</div>
+                        <div><span class="text-xl font-display font-bold block leading-none">AGRINHO</span><span class="text-xs text-fresh">2026</span></div>
+                    </div>
+                    <p class="text-sm text-white/70">Agro forte e futuro verde: produzindo hoje sem comprometer o amanhã.</p>
                 </div>
-
+                <nav aria-label="Mapa do site - seções">
+                    <h4 class="font-semibold mb-4 text-fresh">Navegação</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#inicio" class="hover:text-fresh transition-colors">Início</a></li>
+                        <li><a href="#producao" class="hover:text-fresh transition-colors">Produção</a></li>
+                        <li><a href="#sustentabilidade" class="hover:text-fresh transition-colors">Sustentabilidade</a></li>
+                        <li><a href="#galeria" class="hover:text-fresh transition-colors">Galeria</a></li>
+                        <li><a href="#desafios" class="hover:text-fresh transition-colors">Desafios</a></li>
+                        <li><a href="#solucoes" class="hover:text-fresh transition-colors">Soluções</a></li>
+                    </ul>
+                </nav>
+                <nav aria-label="Mapa do site - ferramentas">
+                    <h4 class="font-semibold mb-4 text-fresh">Ferramentas</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#calculadora" class="hover:text-fresh transition-colors">Calculadora de impacto</a></li>
+                        <li><a href="#acao" class="hover:text-fresh transition-colors">Quiz educativo</a></li>
+                        <li><a href="#acao" class="hover:text-fresh transition-colors">Vídeo</a></li>
+                        <li><a href="#participar" class="hover:text-fresh transition-colors">Inscrição</a></li>
+                    </ul>
+                </nav>
                 <div>
-                    <label for="email" class="block mb-2 font-medium">E-mail</label>
-                    <input type="email" id="email" name="email" required
-                           class="w-full px-5 py-4 rounded-2xl bg-white/10 border border-white/30 text-white placeholder-white/50 focus:outline-none focus:border-emerald-400"
-                           placeholder="seu@email.com">
+                    <h4 class="font-semibold mb-4 text-fresh">Fontes de dados</h4>
+                    <ul class="space-y-2 text-sm text-white/70">
+                        <li>Cepea/USP • Embrapa</li>
+                        <li>IBGE • MapBiomas</li>
+                        <li>ANA • Rede ILPF</li>
+                        <li>Plano ABC+ • Febrapdp</li>
+                    </ul>
                 </div>
-
-                <div>
-                    <label for="cidade" class="block mb-2 font-medium">Cidade / Estado</label>
-                    <input type="text" id="cidade" name="cidade"
-                           class="w-full px-5 py-4 rounded-2xl bg-white/10 border border-white/30 text-white placeholder-white/50 focus:outline-none focus:border-emerald-400"
-                           placeholder="Ex: Londrina - PR">
-                </div>
-
-                <button type="submit"
-                        class="w-full bg-white text-emerald-900 py-5 rounded-2xl text-xl font-bold hover:bg-emerald-100 transition-all mt-4">
-                    Confirmar Inscrição
-                </button>
-            </form>
+            </div>
+            <div class="border-t border-leaf/30 pt-8 text-center text-sm text-white/60">
+                <p>&copy; 2026 Agrinho — Projeto educativo. Todos os direitos reservados.</p>
+            </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-emerald-950 text-emerald-300 py-16 text-center">
-        <p class="text-2xl font-bold mb-3">AGRINHO 2026</p>
-        <p>Construindo um agro mais forte e sustentável</p>
     </footer>
 
-    <script src="script.js"></script>
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-14 h-14 bg-harvest text-forest rounded-full shadow-xl opacity-0 invisible z-50" aria-label="Voltar ao topo">
+        <i class="fa-solid fa-arrow-up text-xl" aria-hidden="true"></i>
+    </button>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // ===== MENU MOBILE =====
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function fecharMenuMobile() {
+            if (!mobileMenu || !menuBtn) return;
+            mobileMenu.classList.add('hidden');
+            const icon = menuBtn.querySelector('i');
+            icon.classList.remove('fa-xmark'); icon.classList.add('fa-bars');
+            menuBtn.setAttribute('aria-expanded', 'false');
+            menuBtn.setAttribute('aria-label', 'Abrir menu');
+        }
+
+        if (menuBtn && mobileMenu) {
+            menuBtn.addEventListener('click', function () {
+                const isOpen = !mobileMenu.classList.contains('hidden');
+                mobileMenu.classList.toggle('hidden');
+                const icon = menuBtn.querySelector('i');
+                if (isOpen) { icon.classList.remove('fa-xmark'); icon.classList.add('fa-bars'); menuBtn.setAttribute('aria-expanded', 'false'); }
+                else { icon.classList.remove('fa-bars'); icon.classList.add('fa-xmark'); menuBtn.setAttribute('aria-expanded', 'true'); }
+            });
+            document.querySelectorAll('.nav-link-mobile').forEach(l => l.addEventListener('click', fecharMenuMobile));
+            document.addEventListener('keydown', function (e) { if (e.key === 'Escape') fecharMenuMobile(); });
+        }
+
+        // ===== HEADER / PROGRESSO / SCROLLSPY / TOPO =====
+        const header = document.getElementById('header');
+        const progressBar = document.getElementById('scroll-progress');
+        const backToTop = document.getElementById('back-to-top');
+        const sections = document.querySelectorAll('main section[id]');
+        const navLinks = document.querySelectorAll('header nav .nav-link');
+
+        function onScroll() {
+            const y = window.scrollY;
+            if (header) header.classList.toggle('scrolled', y > 80);
+
+            if (progressBar) {
+                const h = document.documentElement.scrollHeight - window.innerHeight;
+                progressBar.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
+            }
+
+            if (backToTop) {
+                const show = y > 500;
+                backToTop.classList.toggle('opacity-0', !show);
+                backToTop.classList.toggle('invisible', !show);
+                backToTop.classList.toggle('opacity-100', show);
+                backToTop.classList.toggle('visible', show);
+            }
+
+            const pos = y + 160;
+            sections.forEach(sec => {
+                if (pos >= sec.offsetTop && pos < sec.offsetTop + sec.offsetHeight) {
+                    navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + sec.id));
+                }
+            });
+        }
+
+        let ticking = false;
+        window.addEventListener('scroll', function () {
+            if (!ticking) {
+                window.requestAnimationFrame(function () { onScroll(); ticking = false; });
+                ticking = true;
+            }
+        }, { passive: true });
+
+        if (backToTop) backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' }));
+
+        // ===== CONTADORES ANIMADOS =====
+        function animateCounter(el, target, suffix) {
+            if (reducedMotion) { el.textContent = String(target).replace('.', ',') + suffix; return; }
+            const duration = 2000, steps = 60; let current = 0;
+            const inc = target / steps, stepTime = duration / steps;
+            const timer = setInterval(() => {
+                current += inc;
+                if (current >= target) { current = target; clearInterval(timer); }
+                const val = target % 1 !== 0 ? current.toFixed(1) : Math.floor(current);
+                el.textContent = String(val).replace('.', ',') + suffix;
+            }, stepTime);
+        }
+
+        const counterObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target.querySelector('p:first-child');
+                    animateCounter(el, parseFloat(el.dataset.target), el.dataset.suffix || '');
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        document.querySelectorAll('.stat-item').forEach(i => counterObserver.observe(i));
+
+        // ===== REVEAL + BARRAS DE GRÁFICO =====
+        const revealObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    entry.target.querySelectorAll('.chart-bar').forEach(bar => bar.style.width = bar.dataset.width);
+                    if (entry.target.classList.contains('chart-bar')) entry.target.style.width = entry.target.dataset.width;
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // ===== CALCULADORA =====
+        const emissionFactors = { soja: 2.8, milho: 2.5, cafe: 3.2, pecuaria: 4.5, cana: 2.3 };
+        const practiceReductions = { pratica1: 0.15, pratica2: 0.25, pratica3: 0.10, pratica4: 0.08 };
+
+        window.calcularImpacto = function () {
+            const hectaresInput = document.getElementById('hectares');
+            const atividadeSelect = document.getElementById('atividade');
+            const resultado = document.getElementById('resultado');
+            if (!hectaresInput || !resultado) return;
+
+            const hectares = parseFloat(hectaresInput.value);
+            if (isNaN(hectares) || hectares <= 0) {
+                resultado.innerHTML = '<div class="text-center p-6 bg-red-50 rounded-xl border border-red-200"><p class="text-red-700 font-medium">Digite um número válido de hectares (maior que zero).</p></div>';
+                return;
+            }
+
+            const baseline = hectares * emissionFactors[atividadeSelect.value];
+            let reduction = 0, practices = 0;
+            Object.keys(practiceReductions).forEach(id => {
+                const cb = document.getElementById(id);
+                if (cb && cb.checked) { reduction += practiceReductions[id]; practices++; }
+            });
+            reduction = Math.min(reduction, 0.5);
+
+            const reduced = baseline * (1 - reduction);
+            const saved = baseline - reduced;
+            const trees = Math.round(saved * 7.5);
+            const water = Math.round(hectares * 8500 * (practices > 0 ? 1 : 0.3));
+
+            resultado.innerHTML = `
+                <div class="space-y-4">
+                    <div class="bg-leaf/10 p-5 rounded-xl border border-leaf/20">
+                        <p class="text-sm text-leaf font-semibold mb-1">Emissão estimada (sem práticas)</p>
+                        <p class="text-2xl font-display font-bold text-forest">${baseline.toFixed(1).replace('.', ',')} <span class="text-base">ton CO₂e/ano</span></p>
+                    </div>
+                    ${practices > 0 ? `
+                    <div class="bg-fresh/20 p-5 rounded-xl border border-fresh/40">
+                        <p class="text-sm text-leaf font-semibold mb-1"><i class="fa-solid fa-leaf" aria-hidden="true"></i> Com ${practices} prática${practices > 1 ? 's' : ''} sustentável${practices > 1 ? 's' : ''}</p>
+                        <p class="text-3xl font-display font-bold text-forest">${reduced.toFixed(1).replace('.', ',')} <span class="text-base">ton CO₂e/ano</span></p>
+                        <div class="mt-3">
+                            <div class="flex justify-between text-xs mb-1"><span class="text-forest">Redução</span><span class="font-bold text-leaf">-${(reduction * 100).toFixed(0)}%</span></div>
+                            <div class="h-3 bg-gray-200 rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-leaf to-fresh rounded-full" style="width:${(reduction * 100).toFixed(0)}%"></div></div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3 mt-4 pt-4 border-t border-leaf/20 text-center">
+                            <div><p class="text-xl font-bold text-forest">${saved.toFixed(1).replace('.', ',')}</p><p class="text-xs text-gray-600">ton CO₂e evitadas</p></div>
+                            <div><p class="text-xl font-bold text-forest">${trees}</p><p class="text-xs text-gray-600">árvores equivalentes</p></div>
+                        </div>
+                    </div>` : `
+                    <div class="bg-harvest/20 p-5 rounded-xl border border-harvest/40">
+                        <p class="text-sm text-earth font-semibold"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i> Marque práticas sustentáveis acima e reduza até 50% das emissões!</p>
+                    </div>`}
+                    <div class="bg-blue-50 p-4 rounded-xl border border-blue-200 flex items-center gap-3">
+                        <i class="fa-solid fa-droplet text-blue-500 text-xl" aria-hidden="true"></i>
+                        <div><p class="text-sm font-semibold text-blue-900">Economia de água</p><p class="text-lg font-bold text-blue-700">${water.toLocaleString('pt-BR')} litros/ano</p></div>
+                    </div>
+                    <p class="text-xs text-gray-500 italic">* Estimativas educativas baseadas em Embrapa e estudos do setor.</p>
+                </div>`;
+        };
+
+        // ===== QUIZ =====
+        const questions = [
+            { q: "Qual percentual do PIB brasileiro vem do agronegócio?", options: ["15%", "24,5%", "35%", "10%"], a: "24,5%", ex: "Segundo o Cepea/USP, o agro responde por cerca de 24,5% do PIB brasileiro." },
+            { q: "O que significa ILPF?", options: ["Integração Lavoura-Pecuária-Floresta", "Irrigação Localizada de Precisão Florestal", "Índice de Logística e Produção Familiar", "Inovação em Lavouras de Pequeno Porte"], a: "Integração Lavoura-Pecuária-Floresta", ex: "A ILPF combina diferentes atividades na mesma área, aumentando renda e sequestrando carbono." },
+            { q: "Qual gás de efeito estufa é mais associado à pecuária?", options: ["Dióxido de carbono (CO₂)", "Metano (CH₄)", "Ozônio (O₃)", "Vapor d'água"], a: "Metano (CH₄)", ex: "O metano é liberado na digestão dos ruminantes (fermentação entérica)." },
+            { q: "Quanta água a irrigação inteligente pode economizar?", options: ["5–15%", "10–20%", "30–50%", "Nenhuma"], a: "30–50%", ex: "Sensores de umidade e gotejamento reduzem o consumo em 30% a 50%." },
+            { q: "O que é intensificação sustentável?", options: ["Expandir a lavoura sobre a floresta", "Produzir mais na mesma área, sem desmatar", "Usar mais fertilizantes químicos", "Reduzir a produção agrícola"], a: "Produzir mais na mesma área, sem desmatar", ex: "É o coração do agro sustentável: mais produtividade por hectare, preservando os biomas." }
+        ];
+
+        let currentQuestion = 0, score = 0, answered = false;
+
+        function loadQuiz() {
+            const quiz = document.getElementById('quiz');
+            if (!quiz) return;
+            if (currentQuestion >= questions.length) return showFinalScore();
+
+            answered = false;
+            const q = questions[currentQuestion];
+            const progress = (currentQuestion / questions.length) * 100;
+
+            let html = `
+                <div class="mb-6">
+                    <div class="flex justify-between text-sm mb-2"><span class="text-leaf font-semibold">Pergunta ${currentQuestion + 1} de ${questions.length}</span><span class="text-gray-600">${score} acerto${score !== 1 ? 's' : ''}</span></div>
+                    <div class="h-2 bg-gray-200 rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-leaf to-fresh transition-all duration-500" style="width:${progress}%"></div></div>
+                </div>
+                <p class="text-xl font-semibold text-forest mb-6">${q.q}</p>
+                <div class="space-y-3">`;
+            q.options.forEach((opt, i) => {
+                html += `<button onclick="answerQuiz(${i})" id="option-${i}" class="quiz-option w-full p-5 text-left border-2 border-gray-200 hover:border-leaf rounded-2xl text-gray-700 hover:bg-leaf/5 font-medium">${opt}</button>`;
+            });
+            html += '</div>';
+            quiz.innerHTML = html;
+        }
+
+        window.answerQuiz = function (i) {
+            if (answered) return;
+            answered = true;
+            const q = questions[currentQuestion];
+            const correct = q.options[i] === q.a;
+            if (correct) score++;
+
+            q.options.forEach((opt, idx) => {
+                const btn = document.getElementById('option-' + idx);
+                btn.disabled = true;
+                if (opt === q.a) { btn.classList.add('border-leaf', 'bg-leaf/10', 'text-forest'); }
+                else if (idx === i) { btn.classList.add('border-red-400', 'bg-red-50', 'text-red-700'); }
+            });
+
+            const quiz = document.getElementById('quiz');
+            const div = document.createElement('div');
+            div.className = `mt-6 p-4 rounded-xl ${correct ? 'bg-leaf/10 border border-leaf/20' : 'bg-amber-50 border border-amber-200'}`;
+            div.innerHTML = `
+                <p class="font-semibold mb-2 ${correct ? 'text-leaf' : 'text-amber-900'}">${correct ? '✅ Resposta correta!' : '❌ Não foi dessa vez.'}</p>
+                <p class="text-sm text-gray-700">${q.ex}</p>
+                <button onclick="nextQuestion()" class="mt-4 w-full bg-leaf hover:bg-leaf/90 text-white py-3 rounded-xl font-semibold">${currentQuestion < questions.length - 1 ? 'Próxima pergunta' : 'Ver resultado'}</button>`;
+            quiz.appendChild(div);
+        };
+
+        window.nextQuestion = function () { currentQuestion++; loadQuiz(); };
+
+        function showFinalScore() {
+            const quiz = document.getElementById('quiz');
+            const pct = Math.round((score / questions.length) * 100);
+            let msg, emoji;
+            if (pct >= 80) { msg = 'Excelente! Você domina o agro sustentável!'; emoji = '🌟'; }
+            else if (pct >= 60) { msg = 'Muito bom! Você entende do assunto!'; emoji = '👏'; }
+            else if (pct >= 40) { msg = 'Bom começo! Continue aprendendo!'; emoji = '💪'; }
+            else { msg = 'Continue estudando: o futuro verde precisa de você!'; emoji = '📚'; }
+
+            quiz.innerHTML = `
+                <div class="text-center py-8 space-y-6">
+                    <p class="text-6xl">${emoji}</p>
+                    <p class="text-5xl font-display font-bold text-forest">${score}/${questions.length}</p>
+                    <p class="text-xl text-gray-600">${pct}% de acertos</p>
+                    <p class="text-lg text-gray-700">${msg}</p>
+                    <button onclick="resetQuiz()" class="bg-leaf hover:bg-leaf/90 text-white px-8 py-4 rounded-2xl font-semibold"><i class="fa-solid fa-rotate-left mr-2" aria-hidden="true"></i>Refazer quiz</button>
+                </div>`;
+        }
+
+        window.resetQuiz = function () { currentQuestion = 0; score = 0; loadQuiz(); };
+
+        // ===== FORMULÁRIO =====
+        const form = document.getElementById('form-inscricao');
+        if (form) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const nome = document.getElementById('nome').value.trim();
+                const email = document.getElementById('email').value.trim();
+
+                if (!nome) { showToast('Preencha seu nome completo.', 'error'); return; }
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showToast('Insira um e-mail válido.', 'error'); return; }
+
+                showToast('Inscrição realizada com sucesso!', 'success');
+                setTimeout(() => {
+                    form.innerHTML = `
+                        <div class="text-center py-12 space-y-4">
+                            <p class="text-6xl">🌱</p>
+                            <h3 class="text-3xl font-display font-bold">Inscrição confirmada!</h3>
+                            <p class="text-emerald-100 text-xl">Obrigado, <strong>${nome}</strong>!<br>Em breve enviaremos novidades para <strong>${email}</strong>.</p>
+                        </div>`;
+                }, 900);
+            });
+        }
+
+        function showToast(message, type) {
+            const toast = document.createElement('div');
+            toast.className = `toast-notification fixed top-24 right-6 z-[100] px-6 py-4 rounded-2xl shadow-2xl text-white ${type === 'success' ? 'bg-leaf' : 'bg-red-500'}`;
+            toast.innerHTML = `<div class="flex items-center gap-3"><i class="fa-solid ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'} text-xl" aria-hidden="true"></i><p class="font-medium">${message}</p></div>`;
+            document.body.appendChild(toast);
+            setTimeout(() => { toast.style.opacity = '0'; toast.style.transition = 'opacity 0.4s'; setTimeout(() => toast.remove(), 400); }, 4000);
+        }
+
+        // ===== SMOOTH SCROLL =====
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (!href || href === '#') return;
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    window.scrollTo({ top: target.offsetTop - 96, behavior: reducedMotion ? 'auto' : 'smooth' });
+                }
+            });
+        });
+
+        // ===== INIT =====
+        onScroll();
+        loadQuiz();
+        window.calcularImpacto();
+    });
+    </script>
 </body>
 </html>
