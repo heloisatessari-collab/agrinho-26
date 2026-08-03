@@ -219,56 +219,91 @@
             </div>
         </section>
 
-        <!-- ============ PRODUÇÃO ============ -->
-        <section id="producao" class="py-24 bg-white">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="text-center mb-16 reveal">
-                    <p class="uppercase tracking-widest text-earth mb-3 text-sm font-semibold">Economia</p>
-                    <h2 class="text-4xl md:text-5xl font-display font-bold mb-6 text-forest">Produção que alimenta o mundo</h2>
-                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                        O agronegócio é o motor da economia brasileira: responde por cerca de <strong>24,5% do PIB</strong> (Cepea/USP) e gera aproximadamente <strong>20 milhões de empregos</strong>, colocando o Brasil entre os maiores exportadores de alimentos do planeta.
+       <!-- ============ PRODUÇÃO ============ -->
+<section id="producao" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16 reveal">
+            <p class="uppercase tracking-widest text-earth mb-3 text-sm font-semibold">Economia</p>
+            <h2 class="text-4xl md:text-5xl font-display font-bold mb-6 text-forest">Produção que alimenta o mundo</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                O agronegócio é o motor da economia brasileira: responde por <strong>25,13% do PIB</strong> (Cepea/USP) e gera aproximadamente <strong>20 milhões de empregos</strong>, colocando o Brasil entre os maiores exportadores de alimentos do planeta.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 items-start">
+
+            <!-- Coluna esquerda: commodities (sem alterações) -->
+            <div class="bg-paper p-8 rounded-3xl border border-earth/20 reveal">
+                <h3 class="text-2xl font-display font-bold mb-6 text-forest">Liderança mundial em exportações</h3>
+                <div class="space-y-5">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-leaf/10 rounded-xl flex items-center justify-center shrink-0"><i class="fa-solid fa-seedling text-leaf text-xl" aria-hidden="true"></i></div>
+                        <div><p class="font-semibold">Soja</p><p class="text-sm text-gray-600">Maior produtor e exportador mundial</p></div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-leaf/10 rounded-xl flex items-center justify-center shrink-0"><i class="fa-solid fa-cow text-leaf text-xl" aria-hidden="true"></i></div>
+                        <div><p class="font-semibold">Carne bovina e de frango</p><p class="text-sm text-gray-600">Maior exportador global de proteína animal</p></div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-leaf/10 rounded-xl flex items-center justify-center shrink-0"><i class="fa-solid fa-mug-hot text-leaf text-xl" aria-hidden="true"></i></div>
+                        <div><p class="font-semibold">Café</p><p class="text-sm text-gray-600">Referência mundial em qualidade e volume</p></div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-leaf/10 rounded-xl flex items-center justify-center shrink-0"><i class="fa-solid fa-wheat-awn text-leaf text-xl" aria-hidden="true"></i></div>
+                        <div><p class="font-semibold">Milho e açúcar</p><p class="text-sm text-gray-600">Base da segurança alimentar e energética</p></div>
+                    </div>
+                </div>
+                <p class="text-xs text-gray-500 mt-6 italic">Fontes: Cepea/USP, Embrapa, IBGE e MapBiomas.</p>
+            </div>
+
+            <!-- Coluna direita: NOVO card de composição do PIB + preservação -->
+            <div class="space-y-6 reveal">
+
+                <!-- Card: Participação no PIB com composição -->
+                <div class="bg-white p-8 rounded-3xl shadow-lg border border-leaf/10">
+                    <p class="text-sm uppercase tracking-wider text-earth mb-2 font-semibold">Participação no PIB</p>
+                    <p class="text-5xl font-display font-bold text-forest mb-6">25,13%</p>
+
+                    <!-- Barra empilhada animada -->
+                    <div class="flex h-6 rounded-full overflow-hidden bg-leaf/10 mb-5" role="img" aria-label="Composição do PIB do agro: setor agrícola 16,1% e setor pecuário 8,9%">
+                        <div class="chart-bar h-full bg-gradient-to-r from-leaf to-fresh" data-width="64.4%"></div>
+                        <div class="chart-bar h-full bg-gradient-to-r from-harvest to-earth" data-width="35.6%"></div>
+                    </div>
+
+                    <!-- Legenda com valores -->
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between gap-3 bg-paper rounded-xl px-4 py-3 flex-wrap">
+                            <span class="flex items-center gap-2 text-sm font-semibold text-forest">
+                                <span class="w-3 h-3 rounded-full bg-leaf inline-block" aria-hidden="true"></span>
+                                <i class="fa-solid fa-wheat-awn text-leaf" aria-hidden="true"></i> Setor Agrícola
+                            </span>
+                            <span class="text-sm"><strong class="text-leaf">16,1%</strong> <span class="text-gray-500">• R$ 2,06 trilhões</span></span>
+                        </div>
+                        <div class="flex items-center justify-between gap-3 bg-paper rounded-xl px-4 py-3 flex-wrap">
+                            <span class="flex items-center gap-2 text-sm font-semibold text-forest">
+                                <span class="w-3 h-3 rounded-full bg-harvest inline-block" aria-hidden="true"></span>
+                                <i class="fa-solid fa-cow text-earth" aria-hidden="true"></i> Setor Pecuário
+                            </span>
+                            <span class="text-sm"><strong class="text-earth">8,9%</strong> <span class="text-gray-500">• R$ 1,14 trilhão</span></span>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-gray-500 mt-5 italic">
+                        Valores dentro da porteira. A cadeia completa do agro inclui ainda insumos, agroindústria e serviços (Cepea/USP).
                     </p>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-12 items-start">
-                    <div class="bg-paper p-8 rounded-3xl border border-earth/20 reveal">
-                        <h3 class="text-2xl font-display font-bold mb-6 text-forest">Liderança mundial em exportações</h3>
-                        <div class="space-y-5">
-                            <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 bg-leaf/10 rounded-xl flex items-center justify-center shrink-0"><i class="fa-solid fa-seedling text-leaf text-xl" aria-hidden="true"></i></div>
-                                <div><p class="font-semibold">Soja</p><p class="text-sm text-gray-600">Maior produtor e exportador mundial</p></div>
-                            </div>
-                            <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 bg-leaf/10 rounded-xl flex items-center justify-center shrink-0"><i class="fa-solid fa-cow text-leaf text-xl" aria-hidden="true"></i></div>
-                                <div><p class="font-semibold">Carne bovina e de frango</p><p class="text-sm text-gray-600">Maior exportador global de proteína animal</p></div>
-                            </div>
-                            <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 bg-leaf/10 rounded-xl flex items-center justify-center shrink-0"><i class="fa-solid fa-mug-hot text-leaf text-xl" aria-hidden="true"></i></div>
-                                <div><p class="font-semibold">Café</p><p class="text-sm text-gray-600">Referência mundial em qualidade e volume</p></div>
-                            </div>
-                            <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 bg-leaf/10 rounded-xl flex items-center justify-center shrink-0"><i class="fa-solid fa-wheat-awn text-leaf text-xl" aria-hidden="true"></i></div>
-                                <div><p class="font-semibold">Milho e açúcar</p><p class="text-sm text-gray-600">Base da segurança alimentar e energética</p></div>
-                            </div>
-                        </div>
-                        <p class="text-xs text-gray-500 mt-6 italic">Fontes: Cepea/USP, Embrapa, IBGE e MapBiomas.</p>
-                    </div>
-
-                    <div class="space-y-6 reveal">
-                        <div class="bg-white p-8 rounded-3xl shadow-lg border border-leaf/10">
-                            <p class="text-sm uppercase tracking-wider text-earth mb-2 font-semibold">PIB do agro</p>
-                            <p class="text-5xl font-display font-bold text-forest mb-2">24,5%</p>
-                            <p class="text-gray-600">da economia brasileira, segundo o Cepea/USP</p>
-                        </div>
-                        <div class="bg-white p-8 rounded-3xl shadow-lg border border-leaf/10">
-                            <p class="text-sm uppercase tracking-wider text-earth mb-2 font-semibold">Preservação no campo</p>
-                            <p class="text-5xl font-display font-bold text-forest mb-2">+25%</p>
-                            <p class="text-gray-600">da vegetação nativa do país é conservada dentro de propriedades rurais (Embrapa Territorial), graças ao Código Florestal</p>
-                        </div>
-                    </div>
+                <!-- Card: Preservação -->
+                <div class="bg-white p-8 rounded-3xl shadow-lg border border-leaf/10">
+                    <p class="text-sm uppercase tracking-wider text-earth mb-2 font-semibold">Preservação no campo</p>
+                    <p class="text-5xl font-display font-bold text-forest mb-2">+25%</p>
+                    <p class="text-gray-600">da vegetação nativa do país é conservada dentro de propriedades rurais (Embrapa Territorial), graças ao Código Florestal</p>
                 </div>
+
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
         <!-- ============ SUSTENTABILIDADE ============ -->
         <section id="sustentabilidade" class="py-24 bg-paper">
