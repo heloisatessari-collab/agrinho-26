@@ -1,33 +1,87 @@
 /* =============================================
-   STYLE.CSS - AGRINHO 2026 (Versão Final)
+   STYLE.CSS - AGRINHO 2026
+   Agro Forte • Futuro Verde
+   Versão completa e profissional
+   =============================================
+
+   PALETA DE CORES (Design System):
+   --forest  : #0B3D2E  (verde escuro)
+   --leaf    : #2D6A4F  (verde folha)
+   --fresh   : #74C69D  (verde claro)
+   --earth   : #7F5539  (marrom terra)
+   --harvest : #F4B942  (amarelo colheita)
+   --paper   : #F8F7F2  (fundo claro)
+   --ink     : #14231C  (texto escuro)
+
+   ÍNDICE:
+   1. Variáveis e Base
+   2. Acessibilidade
+   3. Header e Navegação
+   4. Hero
+   5. Animações
+   6. Cards e Imagens
+   7. Calculadora e Quiz
+   8. Formulário
+   9. Botões e Toast
+   10. Scrollbar e Seleção
+   11. Responsividade
+   12. Reduced Motion e Print
    ============================================= */
 
+
+/* =============================================
+   1. VARIÁVEIS E BASE
+   ============================================= */
 :root {
-    --primaria: #065F46;
-    --secundaria: #10B981;
-    --destaque: #34D399;
-    --dark: #022C22;
+    --forest: #0B3D2E;
+    --leaf: #2D6A4F;
+    --fresh: #74C69D;
+    --earth: #7F5539;
+    --harvest: #F4B942;
+    --paper: #F8F7F2;
+    --ink: #14231C;
+
+    --transition-fast: 0.3s ease;
+    --transition-med: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-card: 0 20px 40px -12px rgba(45, 106, 79, 0.25);
 }
 
-/* Reset e Base */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Inter', system-ui, sans-serif;
-    line-height: 1.6;
-    color: #1f2937;
-    overflow-x: hidden;
-}
-
 html {
     scroll-behavior: smooth;
 }
 
-/* Acessibilidade */
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    color: var(--ink);
+    background-color: var(--paper);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Fraunces', 'Playfair Display', serif;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+/* Compensa a altura do header fixo ao navegar por âncoras */
+section {
+    scroll-margin-top: 96px;
+}
+
+
+/* =============================================
+   2. ACESSIBILIDADE
+   ============================================= */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -40,26 +94,36 @@ html {
     border-width: 0;
 }
 
-/* Navbar */
-nav {
-    background-color: var(--dark);
-    color: white;
-    position: fixed;
-    width: 100%;
-    z-index: 50;
-    transition: all 0.4s ease;
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--fresh);
+    outline-offset: 3px;
+    border-radius: 0.5rem;
 }
 
-nav.scrolled {
-    background-color: rgba(2, 44, 34, 0.97);
+
+/* =============================================
+   3. HEADER E NAVEGAÇÃO
+   ============================================= */
+#header {
+    transition: all var(--transition-med);
+    background: transparent;
+}
+
+#header.scrolled {
+    background: rgba(11, 61, 46, 0.97) !important;
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
 }
 
-/* Links da Navbar (Desktop) */
+/* Links da navegação (desktop) */
 .nav-link {
     position: relative;
-    transition: color 0.3s;
+    transition: color var(--transition-fast);
 }
 
 .nav-link:after {
@@ -67,181 +131,305 @@ nav.scrolled {
     position: absolute;
     width: 0;
     height: 3px;
-    bottom: -6px;
-    left: 0;
-    background: linear-gradient(to right, var(--secundaria), var(--destaque));
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(to right, var(--fresh), var(--leaf));
+    border-radius: 2px;
     transition: width 0.4s ease;
 }
 
-.nav-link:hover:after {
+.nav-link:hover:after,
+.nav-link.active:after {
     width: 100%;
 }
 
-/* Links do Menu Mobile */
+/* Links do menu mobile */
 .nav-link-mobile {
     color: white;
-    padding: 0.5rem 0;
-    transition: color 0.3s, transform 0.3s;
+    padding: 0.75rem 0;
+    display: block;
+    transition: all var(--transition-fast);
 }
 
 .nav-link-mobile:hover {
-    color: var(--destaque);
-    transform: translateX(6px);
+    color: var(--fresh);
+    transform: translateX(8px);
 }
 
-/* Hero */
+
+/* =============================================
+   4. HERO
+   ============================================= */
 .hero-bg {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.75)),
-                      url('https://images.unsplash.com/photo-1625246333195-78d9c38ad2d6?w=2000');
+    background-image:
+        linear-gradient(135deg,
+            rgba(11, 61, 46, 0.88) 0%,
+            rgba(45, 106, 79, 0.72) 50%,
+            rgba(11, 61, 46, 0.88) 100%),
+        url('https://images.unsplash.com/photo-1625246333195-78d9c38ad2d6?w=2000&q=80');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    color: white;
-    position: relative;
 }
 
-/* Títulos */
-h1, h2 {
-    font-family: 'Playfair Display', sans-serif;
-    font-weight: 700;
-    line-height: 1.1;
+/* Efeito parallax apenas em telas grandes e com movimento permitido */
+@media (min-width: 769px) and (prefers-reduced-motion: no-preference) {
+    .hero-bg {
+        background-attachment: fixed;
+    }
 }
 
-/* Cards */
-.card-hover {
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid #f3f4f6;
+
+/* =============================================
+   5. ANIMAÇÕES
+   ============================================= */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.card-hover:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 25px 50px -12px rgb(16 185 129 / 0.25);
-    border-color: var(--secundaria);
+@keyframes slideInRight {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
-/* Imagens */
-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+/* Contadores do hero entram em sequência */
+.stat-item {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.stat-item:nth-child(1) { animation-delay: 0.1s; }
+.stat-item:nth-child(2) { animation-delay: 0.2s; }
+.stat-item:nth-child(3) { animation-delay: 0.3s; }
+.stat-item:nth-child(4) { animation-delay: 0.4s; }
+
+/* Elementos que surgem ao rolar a página */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Barras do gráfico de adoção de práticas */
+.chart-bar {
+    width: 0;
+    transition: width 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+/* =============================================
+   6. CARDS E IMAGENS
+   ============================================= */
+.lift {
+    transition: all var(--transition-med);
+}
+
+.lift:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-card);
+}
+
+figure img {
     transition: transform 0.6s ease;
 }
 
-.rounded-3xl {
-    border-radius: 1.5rem;
+figure:hover img {
+    transform: scale(1.05);
 }
 
-img:hover {
-    transform: scale(1.04);
+figure figcaption {
+    line-height: 1.5;
 }
 
-/* Calculadora - Input */
+
+/* =============================================
+   7. CALCULADORA E QUIZ
+   ============================================= */
 input[type="number"] {
-    background-color: rgba(255, 255, 255, 0.08);
-    color: white;
-    border: 2px solid rgba(255, 255, 255, 0.25);
-    border-radius: 1.25rem;
-    padding: 1.5rem 1rem;
-    font-size: 2.5rem;
-    text-align: center;
-    width: 100%;
-    transition: all 0.3s;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
 }
 
-input[type="number"]:focus {
+input[type="number"]:focus,
+select:focus {
     outline: none;
-    border-color: var(--destaque);
-    box-shadow: 0 0 0 5px rgba(52, 211, 153, 0.2);
+    border-color: var(--leaf) !important;
+    box-shadow: 0 0 0 4px rgba(45, 106, 79, 0.15);
 }
 
-/* Formulário de Inscrição */
-#form-inscricao input[type="text"],
-#form-inscricao input[type="email"] {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: white;
-    border: 2px solid rgba(255, 255, 255, 0.25);
-    border-radius: 1rem;
-    padding: 1rem 1.25rem;
-    font-size: 1.1rem;
-    width: 100%;
-    transition: all 0.3s;
+.quiz-option {
+    transition: all var(--transition-fast);
+}
+
+.quiz-option:hover:not(:disabled) {
+    transform: translateX(8px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.quiz-option:disabled {
+    cursor: not-allowed;
+    opacity: 0.9;
+}
+
+
+/* =============================================
+   8. FORMULÁRIO DE INSCRIÇÃO
+   ============================================= */
+#form-inscricao input:focus {
+    outline: none;
+    border-color: var(--fresh) !important;
+    box-shadow: 0 0 0 4px rgba(116, 198, 157, 0.25);
 }
 
 #form-inscricao input::placeholder {
     color: rgba(255, 255, 255, 0.5);
 }
 
-#form-inscricao input:focus {
-    outline: none;
-    border-color: var(--destaque);
-    box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.2);
-}
 
-/* Botões */
+/* =============================================
+   9. BOTÕES E TOAST
+   ============================================= */
 button {
     transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    font-weight: 600;
     cursor: pointer;
 }
 
-button:hover {
-    transform: translateY(-3px);
+button:hover:not(:disabled) {
+    transform: translateY(-2px);
 }
 
-/* Quiz */
-#quiz button {
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    color: white;
-    transition: all 0.3s;
+button:active:not(:disabled) {
+    transform: translateY(0);
 }
 
-#quiz button:hover {
-    background-color: rgba(255, 255, 255, 0.18);
-    border-color: var(--destaque);
-    transform: translateX(8px);
+#back-to-top {
+    transition: all var(--transition-fast);
 }
 
-/* Seções */
-section {
-    scroll-margin-top: 90px;
+#back-to-top:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 24px rgba(244, 185, 66, 0.4);
 }
 
-/* Vídeo */
-#video iframe {
-    border-radius: 1.5rem;
+.toast-notification {
+    animation: slideInRight 0.4s ease;
 }
 
-/* Footer */
-footer {
-    background-color: var(--dark);
-    color: #a1a1aa;
+
+/* =============================================
+   10. SCROLLBAR E SELEÇÃO
+   ============================================= */
+::selection {
+    background-color: var(--fresh);
+    color: var(--forest);
 }
 
-/* Responsividade */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--paper);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--leaf);
+    border-radius: 6px;
+    border: 3px solid var(--paper);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--forest);
+}
+
+
+/* =============================================
+   11. RESPONSIVIDADE
+   ============================================= */
 @media (max-width: 768px) {
-    .hero-bg h1 {
-        font-size: 2.8rem;
+    section {
+        scroll-margin-top: 80px;
     }
 
-    input[type="number"] {
-        font-size: 2rem;
-        padding: 1.2rem 0.8rem;
+    .lift:hover {
+        transform: translateY(-4px);
     }
 
-    .card-hover:hover {
-        transform: translateY(-8px);
+    figure:hover img {
+        transform: scale(1.02);
     }
 }
 
-/* Melhora de foco para acessibilidade */
-a:focus-visible,
-button:focus-visible,
-input:focus-visible {
-    outline: 3px solid var(--destaque);
-    outline-offset: 3px;
+@media (max-width: 480px) {
+    .stat-item p:first-child {
+        font-size: 1.75rem;
+    }
+}
+
+
+/* =============================================
+   12. REDUCED MOTION E PRINT
+   ============================================= */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    .stat-item,
+    .reveal {
+        opacity: 1;
+        transform: none;
+        animation: none;
+    }
+
+    .hero-bg {
+        background-attachment: scroll;
+    }
+}
+
+@media print {
+    #header,
+    #back-to-top,
+    #scroll-progress,
+    button,
+    iframe {
+        display: none !important;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    section {
+        page-break-inside: avoid;
+    }
 }
